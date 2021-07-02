@@ -6,25 +6,23 @@ import { AppComponent } from './app.component';
 import {ProfileComponent} from "./components/profile/profile.component";
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-// import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-// import {MatToolbarModule} from '@angular/material/toolbar';
-// import {MatSidenavModule} from '@angular/material/sidenav';
-// import {MatButtonModule} from '@angular/material/button';
+import {PublicationsCardComponent} from "./components/publications-card/publications-card.component";
+import {CardProfileComponent} from "./components/card-profile/card-profile.component";
+import {LoginComponent} from "./components/login/login.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     ProfileComponent,
-    NavbarComponent
+    NavbarComponent,
+    CardProfileComponent,
+    LoginComponent,
+    PublicationsCardComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule,
-    // NgbModule,
-    // MatToolbarModule,
-    // MatSidenavModule,
-    // MatButtonModule
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
