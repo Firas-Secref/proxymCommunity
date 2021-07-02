@@ -6,8 +6,45 @@
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+
+  <link rel="stylesheet" href="assets/styles/css/navbarCss.css" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 </head>
-<body>
+<body class="mat-typography">
   <app-root></app-root>
+
+  <script src="assets/styles/js/core/jquery.min.js" type="text/javascript"></script>
+  <script src="assets/styles/js/core/popper.min.js" type="text/javascript"></script>
+  <script src="assets/styles/js/core/bootstrap-material-design.min.js" type="text/javascript"></script>
+  <script src="assets/styles/js/plugins/moment.min.js"></script>
+  <script src="assets/styles/js/plugins/bootstrap-datetimepicker.js" type="text/javascript"></script>
+  <script src="assets/styles/js/plugins/nouislider.min.js" type="text/javascript"></script>
+  <script src="assets/styles/js/material-kit.js" type="text/javascript"></script>
+  <script>
+      $(document).ready(function() {
+          //init DateTimePickers
+          materialKit.initFormExtendedDatetimepickers();
+
+          // Sliders Init
+          materialKit.initSliders();
+      });
+
+
+      function scrollToDownload() {
+          if ($('.section-download').length != 0) {
+              $("html, body").animate({
+                  scrollTop: $('.section-download').offset().top
+              }, 1000);
+          }
+      }
+  </script>
 </body>
 </html>
