@@ -1,26 +1,163 @@
-<br><br>
-<div class="col-md-3">
-  <div class="card card-profile">
-    <div class="card-avatar">
-      <a href="javascript:;">
-        <img class="img" src="https://static.remove.bg/remove-bg-web/8be32deab801c5299982a503e82b025fee233bd0/assets/start-0e837dcc57769db2306d8d659f53555feb500b3c5d456879b9c843d1872e7baa.jpg" />
-      </a>
-    </div>
-    <div class="card-body">
-      <h4 class="card-title">Firas Secref</h4>
-      <h6 class="card-category text-gray">Full Stack</h6>
-      <hr>
-      <h4 class="fontStyle">Departement</h4>
-      <h6 class="card-description" style="text-align: left; margin-left: 5px">Banking Lab</h6>
-      <hr>
+<div class="profile-page sidebar-collapse">
+<!--  <nav class="navbar navbar-transparent navbar-color-on-scroll fixed-top navbar-expand-lg" color-on-scroll="100" id="sectionsNav">-->
+<!--    <div class="container">-->
+<!--      <div class="navbar-translate">-->
+<!--        <a class="navbar-brand" href="https://www.creative-tim.com/product/material-kit/?partner=101249" target="_blank">-->
+<!--          Material Kit </a>-->
+<!--        <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--          <span class="sr-only">Toggle navigation</span>-->
+<!--          <span class="navbar-toggler-icon"></span>-->
+<!--          <span class="navbar-toggler-icon"></span>-->
+<!--          <span class="navbar-toggler-icon"></span>-->
+<!--        </button>-->
+<!--      </div>-->
+<!--      <div class="collapse navbar-collapse">-->
+<!--        <ul class="navbar-nav ml-auto">-->
+<!--          <li class="dropdown nav-item">-->
+<!--            <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">-->
+<!--              <i class="material-icons">apps</i> Components-->
+<!--            </a>-->
+<!--            <div class="dropdown-menu dropdown-with-icons">-->
+<!--              <a href="../index.html" class="dropdown-item">-->
+<!--                <i class="material-icons">layers</i> All Components-->
+<!--              </a>-->
+<!--              <a href="https://demos.creative-tim.com/material-kit/docs/2.0/getting-started/introduction.html" class="dropdown-item">-->
+<!--                <i class="material-icons">content_paste</i> Documentation-->
+<!--              </a>-->
+<!--            </div>-->
+<!--          </li>-->
+<!--          <li class="nav-item">-->
+<!--            <a class="nav-link" href="javascript:void(0)" onclick="scrollToDownload()">-->
+<!--              <i class="material-icons">cloud_download</i> Download-->
+<!--            </a>-->
+<!--          </li>-->
+<!--          <li class="nav-item">-->
+<!--            <a class="nav-link" rel="tooltip" title="" data-placement="bottom" href="https://twitter.com/CreativeTim" target="_blank" data-original-title="Follow us on Twitter">-->
+<!--              <i class="fa fa-twitter"></i>-->
+<!--            </a>-->
+<!--          </li>-->
+<!--          <li class="nav-item">-->
+<!--            <a class="nav-link" rel="tooltip" title="" data-placement="bottom" href="https://www.facebook.com/CreativeTim" target="_blank" data-original-title="Like us on Facebook">-->
+<!--              <i class="fa fa-facebook-square"></i>-->
+<!--            </a>-->
+<!--          </li>-->
+<!--          <li class="nav-item">-->
+<!--            <a class="nav-link" rel="tooltip" title="" data-placement="bottom" href="https://www.instagram.com/CreativeTimOfficial" target="_blank" data-original-title="Follow us on Instagram">-->
+<!--              <i class="fa fa-instagram"></i>-->
+<!--            </a>-->
+<!--          </li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </nav>-->
+
+  <div class="page-header header-filter" data-parallax="true" style="background-image:url('assets/couverture.png');"></div>
+  <div class="main main-raised">
+  <div class="profile-content">
+    <div class="container">
       <div class="row">
-        <div class="col-8">
-          <h4 class="fontStyle">Relations</h4>
+        <div class="col-md-6 ml-auto mr-auto">
+          <div class="profile">
+            <div class="avatar">
+              <img src="assets/profile.jpg" alt="Circle Image" class="img-raised rounded-circle img-fluid">
+            </div>
+            <div class="name">
+              <h3 class="title">Firas Secref</h3>
+              <h6>Full Stack</h6>
+
+            </div>
+          </div>
+          <div class="follow">
+            <button class="btn btn-fab btn-primary btn-round" rel="tooltip" data-toggle="modal" data-target="#thismodal" data-original-title="Follow this user" >
+              <i class="material-icons">edit</i>
+            </button>
+          </div>
         </div>
-        <div class="col-md-4">
-          <p style="margin-right: 0px">15</p>
+      </div>
+
+      <div class="description text-center">
+        <p>An artist of considerable range, Chet Faker &#x2014; the name taken by Melbourne-raised, Brooklyn-based Nick Murphy &#x2014; writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove structure. </p>
+      </div>
+      <div class="row">
+        <div class="col-md-6 ml-auto mr-auto">
+          <div class="profile-tabs">
+            <ul class="nav nav-pills nav-pills-icons justify-content-center" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active" href="#work" role="tab" data-toggle="tab">
+                  <i class="material-icons">dashboard</i> Publications
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#users" role="tab" data-toggle="tab">
+                  <i class="material-icons">group</i> Utilisateurs
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#conversation" role="tab" data-toggle="tab">
+                  <i class="material-icons">chat</i> Conversations
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+<!--My Publications-->
+      <hr>
+      <div class="tab-content tab-space">
+        <div class="tab-pane work active show" id="work">
+
+          <div class="row">
+            <div class="col-md-7 ml-auto mr-auto ">
+              <div class="row collections">
+
+                <app-publications-card></app-publications-card>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+<!--USERS-->
+        <div class="tab-pane connections" id="users">
+          <div class="row">
+
+            <div class="col-md-5 mr-auto ml-auto">
+              <div class="card card-profile card-plain">
+                <div class="row">
+                  <div class="col-md-5">
+                    <div class="card-header card-header-image">
+                      <a href="#pablo">
+                        <img class="img" src="http://new.kevinrees.com/wp-content/uploads/2016/12/Kevin-Portrait-Square.jpg">
+                      </a>
+                      <div class="colored-shadow" style="background-image: url('http://new.kevinrees.com/wp-content/uploads/2016/12/Kevin-Portrait-Square.jpg'); opacity: 1;"></div></div>
+                  </div>
+                  <div class="col-md-7">
+                    <div class="card-body">
+                      <h4 class="card-title">Marc Jacobs</h4>
+                      <h6 class="card-category text-muted">Designer</h6>
+
+                      <p class="card-description">
+                        Don't be scared of the truth because we need to restart the human foundation in truth...
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="tab-pane text-center gallery" id="conversation">
+
         </div>
       </div>
     </div>
   </div>
 </div>
+
+</div>
+
