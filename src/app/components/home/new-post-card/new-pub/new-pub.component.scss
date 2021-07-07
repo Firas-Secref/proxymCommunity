@@ -1,0 +1,119 @@
+.dropdown-list-image {
+  position: relative;
+  height: 4.5rem;
+  width: 3.5rem;
+}
+.dropdown-list-image img {
+  height: 3.5rem;
+  width: 3.5rem;
+}
+textarea{
+  margin-left: 12px;
+  border: white;
+}
+textarea:focus{
+  border-width: 1px;
+  border: #fbfbfb;
+}
+
+.social-icon {
+  margin: 0 5px 5px 0;
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  line-height: 40px !important;
+  color: #555;
+  text-shadow: none;
+  border-radius: 3px;
+  overflow: hidden;
+  display: block;
+  float: left;
+  text-align: center;
+  border: 1px solid #AAA;
+}
+.social-icon:hover {
+  border-color: transparent;
+}
+
+.social-icon i {
+  display: block;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  line-height: 40px;
+  position: relative;
+}
+.social-icon i:last-child {
+  color: #FFF !important;
+}
+
+.social-icon:hover i:first-child {
+  margin-top: -40px;
+}
+
+/***social icons lg (big)***/
+.social-icon-lg {
+  margin: 0 5px 5px 0;
+  width: 60px;
+  height: 60px;
+  font-size: 30px;
+  line-height: 60px !important;
+  color: #555;
+  text-shadow: none;
+  border-radius: 3px;
+  overflow: hidden;
+  display: block;
+  float: left;
+  text-align: center;
+  border: 1px solid #AAA;
+}
+.social-icon-lg:hover {
+  border-color: transparent;
+}
+.inputfile {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+.inputfile + label {
+  font-size: 1.25em;
+  font-weight: 700;
+  padding: 12px;
+  border-radius: 15px;
+  color: white;
+  background-color: #9fa5b1;
+  display: inline-block;
+}
+
+.inputfile:focus + label,
+.inputfile + label:hover {
+  background-color: #0d50bf;
+}
+.inputfile + label {
+  cursor: pointer; /* "hand" cursor */
+}
+.inputfile:focus + label {
+  outline: 1px dotted #000;
+  outline: -webkit-focus-ring-color auto 5px;
+}
+
+.stylingImg{
+  height: 40%;
+  width: 20%;
+  border-radius: 12px;
+}
+textarea{
+  width: 100%;
+  font-size: 18px;
+  color: #9fa8da;
+}
+.text-truncate{
+  font-size: 22px;
+}
+button{
+
+}

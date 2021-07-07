@@ -1,0 +1,51 @@
+<h2 mat-dialog-title> Créer une publication </h2>
+<hr>
+
+<div class="box-body p-0">
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="p-3 d-flex align-items-center osahan-post-header">
+
+        <div class="dropdown-list-image mr-3">
+          <img class="rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="" />
+        </div>
+        <div class="font-weight-bold mr-3">
+          <div class="text-truncate">Firas Secref</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <mat-form-field appearance="fill">
+        <mat-label [(ngModel)]="selectedCategorie">Categorie</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let cat of categories" value={{cat}}>{{cat}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col-md-4">
+      <input type="file" name="file" id="file" class="inputfile" multiple (change)="onFileChanged($event)" />
+      <label for="file"><b>Ajouter à votre publication <mat-icon>image</mat-icon> </b></label>
+    </div>
+  </div>
+
+    <br>
+
+    <div>
+      <form [formGroup] = "publicationForm">
+        <textarea formControlName="text" cols="100" rows="10"></textarea>
+      </form>
+    </div>
+
+    <img *ngIf="loaded1" class="stylingImg" [src]="loaded1">
+    <img *ngIf="loaded2" class="stylingImg" [src]="loaded2">
+
+</div>
+<br>
+<div class="d-flex justify-content-center">
+  <button mat-raised-button mat-dialog-close color="primary" style="margin-right: 65px" (click)="publier()">Publier</button>
+  <button mat-raised-button mat-dialog-close color="warn" style="margin-left: 65px">Abondonner</button>
+</div>
+
+
