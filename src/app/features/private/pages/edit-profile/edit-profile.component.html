@@ -14,15 +14,16 @@
           <div class="row justify-content-center">
             <div class="col-lg-3 order-lg-2">
               <div class="card-profile-image">
-                  <img src="assets/profile.jpg" class="rounded-circle">
+                  <img *ngIf="!avatar" src="assets/profileImgNotSelected.png" class="rounded-circle">
+                  <img *ngIf="avatar" [src]="avatar" class="rounded-circle">
               </div>
             </div>
           </div>
           <br>
           <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
             <div class="d-flex justify-content-between">
-              <input hidden type="file" id="upload">
-              <button class="btn btn-fab btn-primary btn-round" rel="tooltip" title="" data-original-title="edit">
+              <input hidden type="file" id="upload" (change)="onFileChanged($event)">
+              <button class="btn btn-fab btn-primary btn-round" rel="tooltip" title="" data-original-title="edit" >
                 <label for="upload"class="material-icons max">edit</label>
               </button>
             </div>
@@ -32,17 +33,15 @@
             <br>
             <div class="text-center">
               <h3>
-                Firas Secref
+                {{currentDev?.firstName}} {{currentDev?.lastName}}
               </h3>
               <div class="h5 font-weight-300">
-                <i class="ni location_pin mr-2"></i>Bucharest, Romania
+                <i class="ni location_pin mr-2"></i>{{currentDev?.email}}
               </div>
               <div class="h5 mt-4">
-                <i class="ni business_briefcase-24 mr-2"></i>Solution Manager - Creative Tim Officer
+                <i class="ni business_briefcase-24 mr-2"></i>{{currentDev?.profile}} - {{currentDev?.departement}}
               </div>
-              <div>
-                <i class="ni education_hat mr-2"></i>University of Computer Science
-              </div>
+
             </div>
           </div>
         </div>
@@ -55,25 +54,25 @@
                 <h3 class="mb-0">Mon compte</h3>
               </div>
               <div class="col-4 text-right">
-                <a href="#!" class="btn btn-sm btn-primary">Modifier</a>
+                <a  (click)="validateChanges()" class="btn btn-sm btn-primary" style="color: white">Modifier</a>
               </div>
             </div>
           </div>
           <div class="card-body">
-            <form>
-              <h6 class="heading-small text-muted mb-4">information</h6>
+            <form [formGroup]="profileForm">
+              <h6 class="heading-small text-muted mb-4">informations génerales</h6>
               <div class="pl-lg-4">
                 <div class="row">
                   <div class="col-lg-6">
                     <div class="form-group focused">
                       <label class="form-control-label" for="input-username">Username</label>
-                      <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="Username" value="lucky.jesse">
+                      <input type="text" formControlName="username" id="input-username" class="form-control form-control-alternative" placeholder="Username">
                     </div>
                   </div>
                   <div class="col-lg-6">
                     <div class="form-group">
                       <label class="form-control-label" for="input-email">Email</label>
-                      <input type="email" id="input-email" class="form-control form-control-alternative" placeholder="jesse@example.com">
+                      <input type="email" formControlName="email" id="input-email" class="form-control form-control-alternative" placeholder="jesse@example.com">
                     </div>
                   </div>
                 </div>
@@ -81,46 +80,50 @@
                   <div class="col-lg-6">
                     <div class="form-group focused">
                       <label class="form-control-label" for="input-first-name">Nom</label>
-                      <input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="First name" value="Lucky">
+                      <input type="text" formControlName="nom" id="input-first-name" class="form-control form-control-alternative" placeholder="nom">
                     </div>
                   </div>
                   <div class="col-lg-6">
                     <div class="form-group focused">
                       <label class="form-control-label" for="input-last-name">Prenom</label>
-                      <input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="Last name" value="Jesse">
+                      <input type="text" formControlName="prenom" id="input-last-name" class="form-control form-control-alternative" placeholder="Last name" value="Jesse">
                     </div>
                   </div>
                 </div>
+
                 <div class="row">
 
                   <div class="col-lg-6">
                     <div class="form-group focused">
                       <label class="form-control-label" for="input-last-name">Profile</label>
                       <div class="input-group mb-3">
-                        <select class="custom-select form-control-alternative colorr" id="inputGroupSelect03">
-                          <option selected>Choose...</option>
-                          <option value="1">One</option>
-                          <option value="2">Two</option>
-                          <option value="3">Three</option>
+                        <select formControlName="profile" class="custom-select form-control-alternative colorr" (change)="changeProfile($event)">
+                          <option *ngFor="let p of profile" value="{{p}}">{{p}}</option>
                         </select>
                       </div>
                     </div>
                   </div>
-
                   <div class="col-lg-6">
-
+                    <div class="form-group focused">
+                      <label class="form-control-label" for="input-last-name">Departement</label>
+                      <div class="input-group mb-3">
+                        <select formControlName="departement" class="custom-select form-control-alternative colorr" (change)="changeDepartment($event)" >
+                          <option *ngFor="let dep of departement" value="{{dep}}">{{dep}}</option>
+                        </select>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
               <hr class="my-4">
               <!-- Address -->
-              <h6 class="heading-small text-muted mb-4">Information personnel</h6>
+              <h6 class="heading-small text-muted mb-4">Informations personnelles</h6>
               <div class="pl-lg-4">
                 <div class="row">
                   <div class="col-md-12">
                     <div class="form-group focused">
                       <label class="form-control-label" for="input-address">Address</label>
-                      <input id="input-address" class="form-control form-control-alternative" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09" type="text">
+                      <input formControlName="address" id="input-address" class="form-control form-control-alternative" placeholder="Home Address" type="text">
                     </div>
                   </div>
                 </div>
@@ -128,19 +131,19 @@
                   <div class="col-lg-4">
                     <div class="form-group focused">
                       <label class="form-control-label" for="input-city">Ville</label>
-                      <input type="text" id="input-city" class="form-control form-control-alternative" placeholder="City" value="New York">
+                      <input formControlName="ville" type="text" id="input-city" class="form-control form-control-alternative" placeholder="Ville">
                     </div>
                   </div>
                   <div class="col-lg-4">
                     <div class="form-group focused">
                       <label class="form-control-label" for="input-country">Pays</label>
-                      <input type="text" id="input-country" class="form-control form-control-alternative" placeholder="Country" value="United States">
+                      <input formControlName="pays" type="text" id="input-country" class="form-control form-control-alternative" placeholder="Pays">
                     </div>
                   </div>
                   <div class="col-lg-4">
                     <div class="form-group">
                       <label class="form-control-label" for="input-country">Code postal</label>
-                      <input type="number" id="input-postal-code" class="form-control form-control-alternative" placeholder="Postal code">
+                      <input formControlName="codePostal" type="number" id="input-postal-code" class="form-control form-control-alternative" placeholder="Postal code">
                     </div>
                   </div>
                 </div>
@@ -150,7 +153,7 @@
               <h6 class="heading-small text-muted mb-4">A propos</h6>
               <div class="pl-lg-4">
                 <div class="form-group focused">
-                  <textarea rows="4" class="form-control form-control-alternative" placeholder="A few words about you ..."></textarea>
+                  <textarea formControlName="aPropos" rows="4" class="form-control form-control-alternative" placeholder="A few words about you ..."></textarea>
                 </div>
               </div>
             </form>

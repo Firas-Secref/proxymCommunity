@@ -1,15 +1,19 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {ProfileComponent} from "./components/profile/profile.component";
-import {LoginComponent} from "./components/login/login.component";
-import {RegisterComponent} from "./components/register/register.component";
-import {HomeComponent} from "./components/home/home.component";
+import {HomeComponent} from "./features/private/pages/home/home.component";
+
 
 const routes: Routes = [
-  {path: "profile", component: ProfileComponent},
-  {path: "login", component: LoginComponent},
-  {path: "register", component: RegisterComponent},
-  {path: "accueil", component: HomeComponent}
+  {path: "home",
+    loadChildren: () => import('./features/private/private.module').then(m => m.PrivateModule)
+  },
+  {
+    path: "auth",
+    loadChildren: () => import('./features/authentication/authentication.module').then(m => m.AuthenticationModule)
+  },
+  {
+    path: '**', component: HomeComponent
+  }
 ];
 
 @NgModule({

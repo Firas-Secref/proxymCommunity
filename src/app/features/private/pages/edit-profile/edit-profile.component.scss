@@ -156,6 +156,8 @@ code {
 img {
   vertical-align: middle;
   border-style: none;
+  //height: 50%;
+  //width: 50%;
 }
 
 caption {
@@ -1117,6 +1119,7 @@ button.bg-white:focus {
 
 .rounded-circle {
   border-radius: 50% !important;
+
 }
 
 .d-none {
@@ -1334,9 +1337,10 @@ a.text-white:focus {
     text-decoration: underline;
   }
 
-  img {
-    page-break-inside: avoid;
-  }
+  //img {
+  //  page-break-inside: avoid;
+  //
+  //}
 
   p,
   h3 {
@@ -1542,7 +1546,9 @@ a.text-white:focus {
   transition: all .15s ease;
   transform: translate(-50%, -30%);
   border-radius: .375rem;
+
 }
+
 
 .card-profile-image img:hover {
   transform: translate(-50%, -33%);

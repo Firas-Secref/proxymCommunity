@@ -18,8 +18,8 @@
 
     <div class="col-md-4">
       <mat-form-field appearance="fill">
-        <mat-label [(ngModel)]="selectedCategorie">Categorie</mat-label>
-        <mat-select>
+        <mat-label >Categorie</mat-label>
+        <mat-select [(ngModel)]="selectedCategorie" ngDefaultControl>
           <mat-option *ngFor="let cat of categories" value={{cat}}>{{cat}}</mat-option>
         </mat-select>
       </mat-form-field>
@@ -34,12 +34,11 @@
 
     <div>
       <form [formGroup] = "publicationForm">
-        <textarea formControlName="text" cols="100" rows="10"></textarea>
+        <textarea placeholder="Quoi de neuf ?" formControlName="text" cols="100" rows="10"></textarea>
       </form>
     </div>
 
     <img *ngIf="loaded1" class="stylingImg" [src]="loaded1">
-    <img *ngIf="loaded2" class="stylingImg" [src]="loaded2">
 
 </div>
 <br>

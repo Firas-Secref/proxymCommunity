@@ -4,7 +4,13 @@
 
 export const environment = {
   production: false,
-  registerUrl: 'http://localhost:8080/register'
+  registerUrl: 'http://localhost:8080/register',
+  loginUrl: 'http://localhost:8080/login',
+  findUserUrl: 'http://localhost:8080/findByName',
+  newPostUrl: 'http://localhost:8080/addPost',
+  updateUser: 'http://localhost:8080/update',
+  updateProfileImage: 'http://localhost:8080/updateImage'
+
 };
 
 /*
