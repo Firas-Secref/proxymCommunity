@@ -9,9 +9,19 @@ import {environment} from "../../../../environments/environment";
 export class PubService {
 
   newPubUrl = environment.newPostUrl;
+  allPostUrl = environment.allPostsUrl;
+  myPostsUrl = environment.myPostsUrl;
   constructor(private http: HttpClient) { }
 
   public newPost(formData: FormData): Observable<any>{
     return this.http.post<any>(`${this.newPubUrl}`, formData);
+  }
+
+  public getAllPosts(): Observable<any>{
+    return this.http.get<any>(`${this.allPostUrl}`);
+  }
+
+  public getMyPosts(id: number): Observable<any>{
+    return this.http.get<any>(`${this.myPostsUrl}/${id}`);
   }
 }

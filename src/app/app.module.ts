@@ -14,6 +14,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {AuthenticationModule} from "./features/authentication/authentication.module";
 import {SharedModule} from "./shared/shared.module";
 import {PrivateModule} from "./features/private/private.module";
+import {MatStepperModule} from "@angular/material/stepper";
 
 
 @NgModule({
@@ -30,6 +31,8 @@ import {PrivateModule} from "./features/private/private.module";
     MatSelectModule,
     MatIconModule,
     MatButtonModule,
+    MatStepperModule,
+
     AuthenticationModule,
     PrivateModule,
     SharedModule,

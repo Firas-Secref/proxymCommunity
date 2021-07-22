@@ -8,11 +8,11 @@
         <div class="col-md-6 ml-auto mr-auto">
           <div class="profile">
             <div class="avatar">
-              <img src="assets/profile.jpg" alt="Circle Image" class="img-raised rounded-circle img-fluid">
+              <img [src]="'data:image/png;base64,'+user?.profileImage" alt="Circle Image" class="img-raised rounded-circle img-fluid">
             </div>
             <div class="name">
-              <h3 class="title">Firas Secref</h3>
-              <h6>Full Stack</h6>
+              <h3 class="title">{{user?.firstName|uppercase}} {{user?.lastName|uppercase}}</h3>
+              <h6>{{user?.profile}} - {{user?.departement}}</h6>
 
             </div>
           </div>
@@ -25,7 +25,7 @@
       </div>
 
       <div class="description text-center">
-        <p>An artist of considerable range, Chet Faker &#x2014; the name taken by Melbourne-raised, Brooklyn-based Nick Murphy &#x2014; writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove structure. </p>
+        <p>{{user?.aPropos}}</p>
       </div>
       <div class="row">
         <div class="col-md-6 ml-auto mr-auto">
@@ -60,7 +60,38 @@
             <div class="col-md-7 ml-auto mr-auto ">
               <div class="row collections">
 
-                <app-publications-card></app-publications-card>
+                <div class="ml-auto mr-auto">
+                  <div class="media-area">
+                    <div *ngFor="let p of myPosts" class="media">
+                      <a class="float-left">
+                        <div class="avatar">
+                          <img class="media-object" [src]="'data:image/png;base64,'+p?.userImage" alt="...">
+                        </div>
+                      </a>
+                      <div class="media-body">
+                        <h4 class="media-heading">{{p?.firstName | uppercase}} {{p?.lastName | uppercase}}<small>· {{p?.department}}</small></h4>
+                        <h6 class="text-muted"></h6>
+
+                        <p>{{p?.text}}</p>
+
+                        <div class="section ml-auto mr-auto ">
+                          <div class="row">
+                            <div>
+                              <img class="img-raised rounded img-fluid sizeImg" alt="Raised Image" [src]="'data:image/png;base64,'+p?.image1">
+                            </div>
+
+                          </div>
+                        </div>
+                        <div class="media-footer">
+                          <a href="#pablo" class="btn btn-danger btn-link float-right">
+                            <i class="material-icons">favorite</i>{{p?.likesNb}}
+                          </a>
+                        </div><hr>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
               </div>
             </div>
           </div>

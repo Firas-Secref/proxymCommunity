@@ -9,7 +9,9 @@ export const environment = {
   findUserUrl: 'http://localhost:8080/findByName',
   newPostUrl: 'http://localhost:8080/addPost',
   updateUser: 'http://localhost:8080/update',
-  updateProfileImage: 'http://localhost:8080/updateImage'
+  updateProfileImage: 'http://localhost:8080/updateImage',
+  allPostsUrl: 'http://localhost:8080/getAllPosts',
+  myPostsUrl: 'http://localhost:8080/myPosts'
 
 };
 

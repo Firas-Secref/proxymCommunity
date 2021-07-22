@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {UserService} from "../../../../services/user.service";
 import {map, mergeMap} from "rxjs/operators";
 import {Developer} from "../../../../../../model/Developer";
 import {Publication} from "../../../../../../model/Publication";
 import {PubService} from "../../../../services/pub.service";
+import {MAT_DIALOG_DATA} from "@angular/material/dialog";
 
 
 @Component({
@@ -22,7 +23,8 @@ export class NewPubComponent implements OnInit {
     "React", "Spring-Boot", "Angular", "iOS", "Android", "Java", "Kotlin", "Java-script"];
 
   selectedCategorie!: string;
-  constructor(private fb: FormBuilder, private service: UserService, private pubService: PubService) { }
+  constructor(private fb: FormBuilder, private service: UserService, private pubService: PubService,
+              @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit(): void {
     this.initForm();

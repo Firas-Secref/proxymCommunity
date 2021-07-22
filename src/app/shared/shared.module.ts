@@ -8,6 +8,8 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
 
 import {NavbarComponent} from "./navbar/navbar.component";
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from "@angular/material/core";
 
 
 
@@ -24,6 +26,9 @@ import {NavbarComponent} from "./navbar/navbar.component";
     MatSelectModule,
     MatIconModule,
     MatButtonModule,
+    MatDatepickerModule,
+    MatNativeDateModule
+
   ],
   exports: [
     ReactiveFormsModule,
@@ -32,7 +37,10 @@ import {NavbarComponent} from "./navbar/navbar.component";
     MatSelectModule,
     MatIconModule,
     MatButtonModule,
-    NavbarComponent
+    NavbarComponent,
+    MatDatepickerModule,
+    MatNativeDateModule
+
   ]
 
 })

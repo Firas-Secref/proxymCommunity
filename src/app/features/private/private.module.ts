@@ -10,6 +10,7 @@ import {NewPubComponent} from "./pages/home/new-post-card/new-pub/new-pub.compon
 import {PublicationsCardComponent} from "./pages/home/publications-card/publications-card.component";
 import {SharedModule} from "../../shared/shared.module";
 import { PrivateRoutingModule } from './private-routing.module';
+import {MatStepperModule} from "@angular/material/stepper";
 
 
 
@@ -25,10 +26,15 @@ import { PrivateRoutingModule } from './private-routing.module';
     PublicationsCardComponent,
 
   ],
+  exports: [
+    ProfileComponent
+  ],
   imports: [
     CommonModule,
     SharedModule,
-    PrivateRoutingModule
+    PrivateRoutingModule,
+    MatStepperModule
+
   ]
 })
 export class PrivateModule { }

@@ -3,6 +3,7 @@ export class Developer {
   firstName!: string;
   lastName!: string;
   username!: string;
+  birthdate!: any;
   email!: string;
   password!: string;
   ville!: string;
@@ -13,7 +14,6 @@ export class Developer {
   profile!: string;
   codePostal!: number;
   aPropos!: string;
-
 
   constructor(firstName: string, lastName: string, username: string, email: string, ville: string, address: string, pays: string, department: string, profile: string, codePostal: number, aPropos: string) {
     this.firstName = firstName;

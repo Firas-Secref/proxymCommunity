@@ -1,0 +1,65 @@
+@import "../../../../../assets/temp_for_register/css/style.css";
+
+.marge{
+  margin-right: 0px;
+}
+.sizeImage{
+  height: 60px;
+  width: 70px;
+}
+
+.btnSize{
+  width: 100px !important;
+  height: 45px !important;
+  font-size: 17px;
+}
+.col-66 {
+  flex: 0 0 auto;
+}
+
+.input-icons i {
+  position: absolute;
+}
+
+.input-icons {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.icon {
+  padding: 10px;
+  color: green;
+  min-width: 50px;
+  text-align: center;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+}
+
+.inputWithIcon input[type = text]{
+  padding-left: 40px;
+}
+.inputWithIcon{
+  position: relative;
+}
+.inputWithIcon mat-datepicker-toggle{
+  position: absolute;
+  right: 7px;
+  top: 26px;
+  padding: 8px 8px 8px 8px;
+}
+.header-filter:before {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: block;
+  left: 0;
+  top: 0;
+  content: "";
+  background: rgba(0, 0, 0, .5);
+}
+

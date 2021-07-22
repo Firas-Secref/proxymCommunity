@@ -45,7 +45,7 @@ export class EditProfileComponent implements OnInit {
         aPropos: data.aPropos
       })
       this.avatar = "data:image/png;base64,"+data.profileImage
-      // console.log(data.profileImage)
+      // console.log(dataprofileImage)
     })
   }
 

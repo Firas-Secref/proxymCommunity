@@ -1,5 +1,4 @@
 
-
       <div class="container mt-7 marge">
         <div>
           <div class="m-auto order-xl-2 mb-5 mb-xl-0">
@@ -8,7 +7,7 @@
                 <div class="col-lg-3 order-lg-2">
                   <div class="card-profile-image marge">
                     <a href="#">
-                      <img src="assets/profile.jpg" class="rounded-circle">
+                      <img [src]="'data:image/png;base64,'+userInput?.profileImage" class="rounded-circle">
                     </a>
                   </div>
                 </div>
@@ -25,7 +24,7 @@
                         <span class="description">Friends</span>
                       </div>
                       <div>
-                        <span class="heading">10</span>
+                        <span class="heading">12</span>
                         <span class="description">Publications</span>
                       </div>
                       <div>
@@ -37,13 +36,13 @@
                 </div>
                 <div class="text-center">
                   <h3>
-                    Firas Secref<span class="font-weight-light">, 23</span>
+                    {{userInput?.firstName| uppercase}} {{userInput?.lastName | uppercase}}<span class="font-weight-light">, 23</span>
                   </h3>
                   <div class="h5 font-weight-300">
-                    <i class="ni location_pin mr-2"></i>Monastir, Bennane
+                    <i class="ni location_pin mr-2"></i>{{userInput?.ville}}, {{userInput?.address}}
                   </div>
                   <div class="h5 mt-4">
-                    <i class="ni business_briefcase-24 mr-2"></i>Front-end developer - Banking Lab
+                    <i class="ni business_briefcase-24 mr-2"></i>{{userInput?.profile}} - {{userInput?.departement}}
                   </div>
                 </div>
               </div>
