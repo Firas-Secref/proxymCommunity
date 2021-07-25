@@ -15,4 +15,8 @@ export class RegisterService {
   public firstRegister(developer: any): Observable<any>{
     return this.http.post<any>(`${this.registerUrlDeveloper}`, developer);
   }
+
+  public register(formData: FormData): Observable<any>{
+    return this.http.post<any>(`${this.registerUrlDeveloper}`, formData);
+  }
 }

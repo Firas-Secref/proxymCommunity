@@ -27,7 +27,8 @@ import {MatStepperModule} from "@angular/material/stepper";
 
   ],
   exports: [
-    ProfileComponent
+    ProfileComponent,
+    EditProfileComponent,
   ],
   imports: [
     CommonModule,

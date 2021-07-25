@@ -16,29 +16,29 @@
       </div>
     </div>
 
-    <div class="col-md-4">
-      <mat-form-field appearance="fill">
-        <mat-label >Categorie</mat-label>
-        <mat-select [(ngModel)]="selectedCategorie" ngDefaultControl>
-          <mat-option *ngFor="let cat of categories" value={{cat}}>{{cat}}</mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-    <div class="col-md-4">
-      <input type="file" name="file" id="file" class="inputfile" multiple (change)="onFileChanged($event)" />
-      <label for="file"><b>Ajouter à votre publication <mat-icon>image</mat-icon> </b></label>
-    </div>
   </div>
 
-    <br>
 
     <div>
       <form [formGroup] = "publicationForm">
-        <textarea placeholder="Quoi de neuf ?" formControlName="text" cols="100" rows="10"></textarea>
+        <textarea placeholder="Quoi de neuf ?" formControlName="text" cols="170" rows="6"></textarea>
       </form>
+      <div class="row">
+        <div class="col-md-12">
+          <img *ngIf="loaded1" class="stylingImg" [src]="loaded1">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-5 bord">
+            <input type="file" name="file" id="file" class="inputfile" multiple (change)="onFileChanged($event)" />
+            <label for="file"><b>Ajouter à votre publication <mat-icon>image</mat-icon> </b></label>
+        </div>
+
+
+      </div>
     </div>
 
-    <img *ngIf="loaded1" class="stylingImg" [src]="loaded1">
+
 
 </div>
 <br>

@@ -3,7 +3,8 @@ export class Developer {
   firstName!: string;
   lastName!: string;
   username!: string;
-  birthdate!: any;
+
+  // birthdate!: any;
   email!: string;
   password!: string;
   ville!: string;
@@ -13,12 +14,14 @@ export class Developer {
   departement!: string;
   profile!: string;
   codePostal!: number;
-  aPropos!: string;
+  // aPropos!: string;
 
-  constructor(firstName: string, lastName: string, username: string, email: string, ville: string, address: string, pays: string, department: string, profile: string, codePostal: number, aPropos: string) {
+  constructor(firstName: string, lastName: string, username: string, password: string, email: string, ville: string, address: string, pays: string, department: string, profile: string, codePostal: number) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.username = username;
+    this.password = password;
+    // this.birthdate = this.birthdate;
     this.email = email;
     this.ville = ville;
     this.address = address;
@@ -26,6 +29,8 @@ export class Developer {
     this.departement = department;
     this.profile = profile;
     this.codePostal = codePostal;
-    this.aPropos = aPropos;
+    // this.aPropos = aPropos;
   }
+
+
 }

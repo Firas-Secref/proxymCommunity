@@ -546,3 +546,6 @@ label.error {
 
 /*# sourceMappingURL=style.css.map */
 
+.required{
+  border-color: red;
+}

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {UserService} from "../../services/user.service";
 import {Developer} from "../../../../model/Developer";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {allProfiles} from "../../../../core/profile";
+
 
 @Component({
   selector: 'app-edit-profile',
@@ -10,10 +12,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 })
 export class EditProfileComponent implements OnInit {
 
-  profile = ["Web Developer", "Mobile Developer", "iOS Developer",
-    "Android Developer", "Front-end Developer", "Back-end Developer", "Full-Stack Developer",
-    "Flutter", "Angular", "React Native", "React Js", "Java", "Spring-Boot"];
-
+  allProfiles = allProfiles;
   departement = ["DigiX Team", "Banking Lab"];
 
   profileForm!: FormGroup;
@@ -23,9 +22,9 @@ export class EditProfileComponent implements OnInit {
   isSet: boolean = false;
   avatar!: any;
   profileImg!: File;
+  imageUrl!: any;
 
-  constructor(private service: UserService, private fb: FormBuilder) {
-  }
+  constructor(private service: UserService, private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.initForm();
@@ -42,7 +41,7 @@ export class EditProfileComponent implements OnInit {
         address: data.address,
         pays: data.pays,
         codePostal: data.codePostal,
-        aPropos: data.aPropos
+        // aPropos: data.aPropos
       })
       this.avatar = "data:image/png;base64,"+data.profileImage
       // console.log(dataprofileImage)
@@ -55,7 +54,7 @@ export class EditProfileComponent implements OnInit {
       email: ["", [Validators.required, Validators.email]],
       nom: ["", [Validators.required]],
       prenom: ["", [Validators.required]],
-      profile: ["pr1", Validators.required],
+      profile: ["", Validators.required],
       departement: ["", [Validators.required]],
       address: ["", [Validators.required]],
       pays: ["", [Validators.required]],
@@ -86,14 +85,14 @@ export class EditProfileComponent implements OnInit {
     const aPropos = this.profileForm.value.aPropos;
 
     let user = new Developer(nom, prenom, username, email, ville, address, pays, departement, profile, codePostal, aPropos);
-
+    console.log("new", user)
     console.log(this.currentDev)
 
-    console.log("qsxfwfsdf", user)
-    this.service.updateUser(this.currentDev.id, user).subscribe((data: any) => {
-      console.log("updated");
-      console.log(data)
-    })
+    // console.log("qsxfwfsdf", user)
+    // this.service.updateUser(this.currentDev.id, user).subscribe((data: any) => {
+    //   console.log("updated");
+    //   console.log(data)
+    // })
   }
 
   changeDepartment($event: any) {
@@ -114,6 +113,7 @@ export class EditProfileComponent implements OnInit {
   }
 
   updateImage(image: any){
+    console.log("enter")
     let formData = new FormData();
     formData.append("image", image);
     console.log(formData)
@@ -129,5 +129,21 @@ export class EditProfileComponent implements OnInit {
     return reader.onload = () =>{
       reader.result
     }
+  }
+
+  readURL($event: any) {
+    this.profileImg = $event.target.files[0];
+    if(this.profileImg){
+      const reader = new FileReader();
+      reader.readAsDataURL(this.profileImg);
+      this.updateImage(this.profileImg)
+
+      console.log(this.profileImg)
+
+      reader.onload = () =>{
+        this.imageUrl = reader.result;
+      }
+    }
+
   }
 }

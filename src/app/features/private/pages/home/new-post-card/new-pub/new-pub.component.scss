@@ -12,8 +12,7 @@ textarea{
   border: white;
 }
 textarea:focus{
-  border-width: 1px;
-  border: #fbfbfb;
+outline: white;
 }
 
 .social-icon {
@@ -83,37 +82,60 @@ textarea:focus{
   font-size: 1.25em;
   font-weight: 700;
   padding: 12px;
+  border: 2px;
   border-radius: 15px;
-  color: white;
-  background-color: #9fa5b1;
+  color: #595959;
+  background-color: #fdffff;
   display: inline-block;
 }
 
 .inputfile:focus + label,
 .inputfile + label:hover {
-  background-color: #0d50bf;
+  cursor: pointer;
 }
 .inputfile + label {
   cursor: pointer; /* "hand" cursor */
 }
-.inputfile:focus + label {
-  outline: 1px dotted #000;
-  outline: -webkit-focus-ring-color auto 5px;
-}
+
 
 .stylingImg{
-  height: 40%;
-  width: 20%;
+  height: 100%;
+  width: 100%;
   border-radius: 12px;
 }
+.bord{
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 12px;
+  border-color: #c8cbcf;
+}
+.bord:hover{
+  cursor: pointer;
+}
+
 textarea{
   width: 100%;
   font-size: 18px;
   color: #9fa8da;
+  font-size: 20px;
 }
 .text-truncate{
   font-size: 22px;
 }
-button{
+mat-icon{
+  font-size: 37px;
+}
+#addImg{
+  color: forestgreen;
+}
 
+
+.btnSize{
+  width: 100px !important;
+  height: 45px !important;
+  font-size: 17px;
+}
+.b{
+
+  border-bottom: 2px;
 }

@@ -8,6 +8,7 @@
         <mat-step [completed]= "firstFormGroup.valid">
 
           <fieldset>
+
             <div class="row">
               <div class="col-md-4">
                 <div class="form-file">
@@ -16,7 +17,6 @@
                     <figure>
                       <img *ngIf="!imageUrl" src="assets/temp_for_register/images/your-picture.png" alt="" class="your_picture_image">
                       <img *ngIf="imageUrl" [src]="imageUrl" alt="" class="your_picture_image">
-
                     </figure>
                     <span class="file-button">choose picture</span>
                   </label>
@@ -28,11 +28,11 @@
                 <form [formGroup] = firstFormGroup>
                   <div class="form-group-flex">
                     <div class="form-group">
-                      <label for="first_name"><b>First name</b></label>
+                      <label for="first_name"><b>First name</b> <small style="color: #9fa5b1"> (Required)</small> </label>
                       <input formControlName="firstname" type="text" name="first_name" id="first_name" placeholder="First Name"/>
                     </div>
                     <div class="form-group">
-                      <label for="last_name"><b>Last name</b></label>
+                      <label for="last_name"><b>Last name</b><small style="color: #9fa5b1"> (Required)</small></label>
                       <input formControlName="lastname" type="text" name="last_name" id="last_name" placeholder="Last Name" />
                     </div>
                   </div>
@@ -42,119 +42,76 @@
             </div>
           </fieldset>
           <div class="float-right">
-            <button class="btnSize" mat-raised-button matStepperNext color="primary">Next</button>
+            <button (click)="check1()" class="btnSize" mat-raised-button matStepperNext color="primary">Next</button>
           </div>
 
         </mat-step>
 
         <mat-step>
-          <div class="row">
+          <form [formGroup]="secondFormGroup" >
+            <div class="row">
 
-            <div class="form-row">
+              <div class="form-row">
 
-              <div class="form-input">
-                <label for="username"><b>Username</b></label>
-                <input type="text" name="street_name" id="username" placeholder="Username" />
+                <div class="form-input">
+                  <label for="username"><b>Username</b> <small style="color: #9fa5b1"> (Required)</small></label>
+                  <input formControlName="username" type="text" name="street_name" id="username" placeholder="Username" />
+                </div>
+                <div class="form-input">
+                  <label for="password"><b>Password</b> <small style="color: #9fa5b1"> (Required)</small></label>
+                  <input formControlName="password" type="password" id="password" placeholder="Password" />
+                </div>
               </div>
               <div class="form-input">
-                <label for="password"><b>Password</b></label>
-                <input type="text" name="street_number" id="password" placeholder="Password" />
+                <label for="email"><b>Email</b> <small style="color: #9fa5b1"> (Required)</small></label>
+                <input formControlName="email" type="email" name="email" id="email" placeholder="Email" />
               </div>
-            </div>
-            <div class="form-input">
-              <label for="email"><b>Email</b></label>
-              <input type="email" name="email" id="email" placeholder="Email" />
-            </div>
 
 
-            <div class="form-input inputWithIcon">
-              <label for="birthdate"><b>Birthdate</b></label>
-              <input [matDatepicker]="picker" placeholder="Birthdate" id="birthdate">
-              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-              <mat-datepicker #picker></mat-datepicker>
+              <div class="form-input inputWithIcon">
+                <label for="birthdate"><b>Birthdate</b> <small style="color: #9fa5b1"> (Required)</small></label>
+                <input formControlName="birthdate" [matDatepicker]="picker" placeholder="Birthdate" id="birthdate">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </div>
+
             </div>
 
-          </div>
+          </form>
+
           <br>
-          <button class="btnSize float-right" mat-raised-button matStepperNext color="primary">Next</button>
+          <button (click)="check2()" class="btnSize float-right" mat-raised-button matStepperNext color="primary">Next</button>
           <button class="btnSize float-left" mat-raised-button matStepperPrevious style="background-color: #9caec0">Previous</button>
 
         </mat-step>
 
         <mat-step>
 
-          <fieldset>
-            <div class="form-radio">
-              <label class="label-radio" ></label>
-              <div class="form-flex">
-                <div class="form-radio">
-                  <input type="radio" name="job" value="designer" id="designer" />
-                  <label for="designer">
-                    <figure>
-                      <img class="sizeImage" src="assets/temp_for_register/images/Angular.png" alt="">
-                    </figure>
-                    <span>Angular</span>
-                  </label>
+          <fieldset id="profile">
+            <form [formGroup]="fourthFormGroup">
+              <div class="row">
+                <div *ngFor="let p of allProfiles" class="col-md-3 marg">
+                  <div class="form-radio">
+                    <label class="label-radio" ></label>
+                    <div class="form-radio">
+                      <input formControlName="profile" type="radio" name="profile" [value]="p.profileName" [id]="p.profileName" />
+                      <label [for]="p.profileName">
+                        <figure>
+                          <img class="sizeImage" [src]="p.profileImage" alt="">
+                        </figure>
+                        <span>{{p.profileName}}</span>
+                      </label>
+                    </div>
+                  </div>
                 </div>
 
-                <div class="form-radio">
-                  <input type="radio" name="job" value="coder" id="coder" checked="checked" />
-                  <label for="coder">
-                    <figure>
-                      <img src="assets/temp_for_register/images/icon-2.png" alt="">
-                    </figure>
-                    <p>Coder</p>
-                  </label>
-                </div>
-
-                <div class="form-radio">
-                  <input type="radio" name="job" value="developer" id="developer" />
-                  <label for="developer">
-                    <figure>
-                      <img src="images/icon-3.png" alt="">
-                    </figure>
-                    <span>Developer</span>
-                  </label>
-                </div>
               </div>
-            </div>
-            <div class="form-radio">
-              <label for="job" class="label-radio"></label>
-              <div class="form-flex">
-                <div class="form-radio">
-                  <input type="radio" name="job" value="designer" id="designer" />
-                  <label for="designer">
-                    <figure>
-                      <img class="sizeImage" src="assets/temp_for_register/images/Angular.png" alt="">
-                    </figure>
-                    <span>Angular</span>
-                  </label>
-                </div>
 
-                <div class="form-radio">
-                  <input type="radio" name="job" value="coder" id="coder" checked="checked" />
-                  <label for="coder">
-                    <figure>
-                      <img src="assets/temp_for_register/images/icon-2.png" alt="">
-                    </figure>
-                    <p>Coder</p>
-                  </label>
-                </div>
+            </form>
 
-                <div class="form-radio">
-                  <input type="radio" name="job" value="developer" id="developer" />
-                  <label for="developer">
-                    <figure>
-                      <img src="images/icon-3.png" alt="">
-                    </figure>
-                    <span>Developer</span>
-                  </label>
-                </div>
-              </div>
-            </div>
           </fieldset>
           <br>
-          <button class="btnSize float-right" mat-raised-button matStepperNext color="primary">Next</button>
+          <button (click)="check3()" class="btnSize float-right" mat-raised-button matStepperNext color="primary">Next</button>
           <button class="btnSize float-left" mat-raised-button matStepperPrevious style="background-color: #9caec0">Previous</button>
 
 
@@ -164,40 +121,41 @@
 
         <mat-step>
           <fieldset>
-            <div class="row">
+            <form [formGroup]="thirdFormGroup">
+              <div class="row">
 
-              <div class="form-row form-input-flex">
-                <div class="form-input">
-                  <label for="city"><b>City</b></label>
-                  <input type="text" name="city" id="city" placeholder="City" />
+                <div class="form-row form-input-flex">
+                  <div class="form-input">
+                    <label for="city"><b>City</b> <small style="color: #9fa5b1"> (Required)</small></label>
+                    <input formControlName="city" type="text" name="city" id="city" placeholder="City" />
+                  </div>
+                  <div class="form-input">
+                    <label for="country"><b>Country</b> <small style="color: #9fa5b1"> (Required)</small></label>
+                    <input formControlName="country" type="text" name="country" id="country" placeholder="Country" />
+                  </div>
                 </div>
-                <div class="form-input">
-                  <label for="country"><b>Country</b></label>
-                  <input type="text" name="country" id="country" placeholder="Country" />
-                </div>
+
               </div>
 
-            </div>
-
-            <div class="row">
-              <div class="form-row form-input-flex">
-                <div class="form-input">
-                  <label for="address"><b>Address</b></label>
-                  <input type="text" name="address" id="address" placeholder="Address" />
-                </div>
-                <div class="form-input">
-                  <label for="department"><b>Department</b></label><br>
-                  <select name="departent" id="department">
-                    <option value="">DigiX Team</option>
-                    <option value="Viet Nam">Banking Lab</option>
-                  </select>
+              <div class="row">
+                <div class="form-row form-input-flex">
+                  <div class="form-input">
+                    <label for="address"><b>Address</b> <small style="color: #9fa5b1"> (Required)</small></label>
+                    <input formControlName="address" type="text" name="address" id="address" placeholder="Address" />
+                  </div>
+                  <div class="form-input">
+                    <label for="department"><b>Department</b> <small style="color: #9fa5b1"> (Required)</small></label><br>
+                    <select formControlName="department" (change)="getDepartment($event)" id="department">
+                      <option value="DigiX Team">DigiX Team</option>
+                      <option value="Banking Lab">Banking Lab</option>
+                    </select>
+                  </div>
                 </div>
               </div>
-            </div>
-
+            </form>
           </fieldset>
           <br>
-          <button class="btnSize float-right" mat-raised-button matStepperNext color="primary">Submit</button>
+          <button (click)="submit()" class="btnSize float-right" mat-raised-button matStepperNext color="primary">Submit</button>
           <button class="btnSize float-left" mat-raised-button matStepperNext style="background-color: #9caec0">Previous</button>
 
         </mat-step>

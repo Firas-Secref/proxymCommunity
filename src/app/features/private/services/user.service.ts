@@ -26,4 +26,5 @@ export class UserService {
   updateProfileImage(id: number, image: FormData): Observable<any>{
     return this.http.post<any>(`${this.updateImage}/${id}`, image)
   }
+
 }

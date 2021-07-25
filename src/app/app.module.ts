@@ -31,7 +31,7 @@ import {MatStepperModule} from "@angular/material/stepper";
     MatSelectModule,
     MatIconModule,
     MatButtonModule,
-    MatStepperModule,
+      MatStepperModule,
 
     AuthenticationModule,
     PrivateModule,

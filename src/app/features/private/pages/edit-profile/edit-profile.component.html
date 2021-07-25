@@ -13,18 +13,22 @@
           <div class="row justify-content-center">
             <div class="col-lg-3 order-lg-2">
               <div class="card-profile-image">
-                  <img *ngIf="!avatar" src="assets/profileImgNotSelected.png" class="rounded-circle">
-                  <img *ngIf="avatar" [src]="avatar" class="rounded-circle">
+                <div class="form-file">
+                  <input hidden type="file" class="inputfile" name="your_picture" id="your_picture"  (change)="readURL($event)"/>
+                  <label for="your_picture">
+                    <figure>
+                      <img *ngIf="!imageUrl" [src]="avatar" alt="" class="your_picture_image rounded-circle">
+                      <img *ngIf="imageUrl" [src]="imageUrl" alt="" class="your_picture_image rounded-circle">
+                    </figure>
+                  </label>
+                </div>
               </div>
             </div>
           </div>
           <br>
           <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
             <div class="d-flex justify-content-between">
-              <input hidden type="file" id="upload" (change)="onFileChanged($event)">
-              <button class="btn btn-fab btn-primary btn-round" rel="tooltip" title="" data-original-title="edit" >
-                <label for="upload"class="material-icons max">edit</label>
-              </button>
+
             </div>
           </div>
 
@@ -97,7 +101,7 @@
                       <label class="form-control-label" for="input-last-name">Profile</label>
                       <div class="input-group mb-3">
                         <select formControlName="profile" class="custom-select form-control-alternative colorr" (change)="changeProfile($event)">
-                          <option *ngFor="let p of profile" value="{{p}}">{{p}}</option>
+                          <option *ngFor="let p of allProfiles" value="{{p.profileName}}">{{p.profileName}}</option>
                         </select>
                       </div>
                     </div>
