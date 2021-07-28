@@ -11,7 +11,8 @@ export class UserService {
 
   private findUserUrl = environment.findUserUrl;
   private updateUserUrl = environment.updateUser;
-  private updateImage = environment.updateProfileImage
+  private updateImage = environment.updateProfileImage;
+  private allUsersUrl = environment.getAllUsersUrl;
   constructor(private http: HttpClient) { }
 
   getUserByUsername(username: string | null): Observable<Developer>{
@@ -25,6 +26,10 @@ export class UserService {
 
   updateProfileImage(id: number, image: FormData): Observable<any>{
     return this.http.post<any>(`${this.updateImage}/${id}`, image)
+  }
+
+  getAllUsers(): Observable<any>{
+    return this.http.get<any>(`${this.allUsersUrl}`);
   }
 
 }

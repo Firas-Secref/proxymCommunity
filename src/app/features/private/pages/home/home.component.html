@@ -1,9 +1,10 @@
 <div class="row margen">
   <div class="col-md-4">
-    <app-card-profile [userInput]="user" ></app-card-profile>
+    <app-card-profile [userInput]="user"></app-card-profile>
+    <app-carousel [suggestions]="allUsers"></app-carousel>
   </div>
-  <div class="col-md-8 marge">
-    <div class="container mt-7">
+  <div class="col-md-8 marge" >
+    <div class="container mt-7 overflow-auto">
       <div class="m-auto order-xl-2 mb-5 mb-xl-0 padd">
 
         <div class="card card-profile shadow">
@@ -15,7 +16,7 @@
 
         <div class="card card-profile shadow">
           <div class="card-body pt-0 pt-md-4">
-            <app-publications-card [postsInput]="posts"></app-publications-card>
+            <app-publications-card [postsInput]="posts" [userInput]="user"></app-publications-card>
           </div>
         </div>
       </div>

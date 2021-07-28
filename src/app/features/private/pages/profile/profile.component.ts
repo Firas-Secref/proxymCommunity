@@ -3,6 +3,7 @@ import {UserService} from "../../services/user.service";
 import {Developer} from "../../../../model/Developer";
 import {map, mergeMap} from "rxjs/operators";
 import {PubService} from "../../services/pub.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-profile',
@@ -13,7 +14,7 @@ export class ProfileComponent implements OnInit {
 
   user!: any;
   myPosts!: any[];
-  constructor(private service: UserService,private pubService: PubService) { }
+  constructor(private service: UserService,private pubService: PubService, private router: Router) { }
 
   ngOnInit(): void {
 
@@ -30,4 +31,7 @@ export class ProfileComponent implements OnInit {
 
   }
 
+  navigateToEdit() {
+    this.router.navigateByUrl("edit");
+  }
 }

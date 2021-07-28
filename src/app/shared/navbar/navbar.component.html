@@ -1,17 +1,75 @@
-<nav class="navbar navbar-expand-xl navbar-dark fixed-top bg-dark fixed-top" id="navbar">
-  <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
+<!--<nav class="navbar navbar-expand-xl navbar-dark fixed-top bg-dark fixed-top" id="navbar">-->
+<!--  <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">-->
+<!--    <span class="navbar-toggler-icon"></span>-->
+<!--  </button>-->
+<!--  <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">-->
 
-    <div class="navbar-nav center">
-      <a routerLink="/accueil" class="nav-item nav-link active navigation"><i class="fa fa-home"></i><span class="spanColor">Accueil</span></a>
-      <a routerLink="/profile" class="nav-item nav-link navigation"><i class="fa fa-user"></i><span class="spanColor">Profile</span></a>
-      <a class="nav-item nav-link navigation"><i class="fa fa-envelope"></i><span class="spanColor">Messages</span></a>
-      <a class="nav-item nav-link navigation"><i class="fa fa-bell"></i><span class="spanColor">Notifications</span></a>
-<!--      <a href="#" class="nav-item nav-link navigation"><i class="fas fa-sign-out-alt"></i><span class="spanColor">Déconnection</span></a>-->
+<!--    <div class="navbar-nav center">-->
+<!--      <a routerLink="/accueil" class="nav-item nav-link active navigation"><i class="fa fa-home"></i><span class="spanColor">Accueil</span></a>-->
+<!--      <a routerLink="/profile" class="nav-item nav-link navigation"><i class="fa fa-user"></i><span class="spanColor">Profile</span></a>-->
+<!--      <a class="nav-item nav-link navigation"><i class="fa fa-envelope"></i><span class="spanColor">Messages</span></a>-->
+<!--      <a class="nav-item nav-link navigation"><i class="fa fa-bell"></i><span class="spanColor">Notifications</span></a>-->
+<!--&lt;!&ndash;      <a href="#" class="nav-item nav-link navigation"><i class="fas fa-sign-out-alt"></i><span class="spanColor">Déconnection</span></a>&ndash;&gt;-->
 
-    </div>
-  </div>
-</nav>
+<!--    </div>-->
+<!--  </div>-->
+<!--</nav>-->
 
+
+<!--Navbar-->
+<mdb-navbar #nav SideClass="navbar navbar-expand-lg navbar-light white" class="fixed-top">
+
+  <!-- Navbar brand -->
+  <mdb-navbar-brand>
+    <a class="navbar-brand" href="#">
+      <img class="tailleImage" src="assets/logoNavbar.png" alt="">
+    </a>
+  </mdb-navbar-brand>
+
+  <links>
+        <!-- Links -->
+    <ul class="navbar-nav nav-flex-icons ml-auto">
+
+      <li class="nav-item">
+        <a class="nav-link"><mdb-icon fas icon="home"></mdb-icon></a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link"><mdb-icon fas icon="comment"></mdb-icon></a>
+      </li>
+
+      <li class="nav-item" >
+        <a  class="nav-link">
+          <div class="btn-group" mdbDropdown>
+            <mdb-icon fas icon="bell" class="iconB" mdbDropdownToggle></mdb-icon>
+            <mdb-badge class="notifPos" color="red" style="border-radius: 30%; height: 60%">3</mdb-badge>
+            <div class="dropdown-menu dropdown-menu-right row z-depth-1">
+                <div class="row" style="width: 400px">
+                  <div class="col-md-12">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium amet animi delectus dicta dolorum ducimus fugiat, illo in minus nulla numquam officia possimus repellendus repudiandae sed sint voluptates. Consectetur, eum?</p>
+                  </div>
+                </div>
+              </div>
+
+          </div>
+        </a>
+      </li>
+      <li class="nav-item" >
+        <a mdbDropdownToggle class="nav-link">
+          <div class="btn-group" mdbDropdown>
+            <mdb-icon classInside="dropdown-toggle" fas icon="user-circle" mdbDropdownToggle></mdb-icon>
+            <div class="dropdown-menu dropdown-menu-left dropdown-primary">
+              <a class="dropdown-item" href="#">Account</a>
+              <div class="divider dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Log Out</a>
+            </div>
+          </div>
+        </a>
+      </li>
+    </ul>
+    <!-- Links -->
+  </links>
+  <!-- Collapsible content -->
+
+</mdb-navbar>
+<!--/.Navbar-->

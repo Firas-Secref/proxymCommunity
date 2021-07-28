@@ -15,7 +15,8 @@ import {AuthenticationModule} from "./features/authentication/authentication.mod
 import {SharedModule} from "./shared/shared.module";
 import {PrivateModule} from "./features/private/private.module";
 import {MatStepperModule} from "@angular/material/stepper";
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,8 @@ import {MatStepperModule} from "@angular/material/stepper";
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    MDBBootstrapModule.forRoot(),
+
 
     MatDialogModule,
     HttpClientModule,
@@ -31,12 +34,14 @@ import {MatStepperModule} from "@angular/material/stepper";
     MatSelectModule,
     MatIconModule,
     MatButtonModule,
-      MatStepperModule,
+    MatStepperModule,
 
     AuthenticationModule,
     PrivateModule,
     SharedModule,
     AppRoutingModule,
+    NgbModule,
+    MDBBootstrapModule.forRoot()
 
   ],
   providers: [],

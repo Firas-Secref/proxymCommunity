@@ -11,7 +11,9 @@ export const environment = {
   updateUser: 'http://localhost:8080/update',
   updateProfileImage: 'http://localhost:8080/updateImage',
   allPostsUrl: 'http://localhost:8080/getAllPosts',
-  myPostsUrl: 'http://localhost:8080/myPosts'
+  myPostsUrl: 'http://localhost:8080/myPosts',
+  likePostUrl: 'http://localhost:8080/like',
+  getAllUsersUrl: 'http://localhost:8080/allUsers'
 
 };
 

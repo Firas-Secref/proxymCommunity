@@ -1,0 +1,31 @@
+<div class="container">
+  <h2><b>Utilisateurs</b></h2>
+  <h5>La liste de tout les utilisateurs de la platform</h5>
+  <div class="row">
+    <div *ngFor="let user of usersList" class="col-md-3" style="margin: 20px">
+      <mdb-card>
+        <!--Card image-->
+        <div class="view view-cascade overlay waves-light" mdbWavesEffect>
+          <mdb-card-img [src]="'data:image/png;base64,'+user?.profileImage"></mdb-card-img>
+          <a>
+            <div class="mask rgba-white-slight"></div>
+          </a>
+        </div>
+        <!--/Card image-->
+
+        <mdb-card-body  class="text-center">
+          <!--Card content-->
+          <h4 class="card-title" style="text-align: center"> {{user?.firstName}} {{user?.lastName}} - {{user?.departement}}</h4>
+          <h6 class="card-title" style="text-align: center">{{user?.profile}}</h6>
+
+          <button mdbBtn type="button" color="primary" mdbWavesEffect>
+            <mdb-icon fas icon="user-plus"></mdb-icon>&nbsp;&nbsp;&nbsp;Suivre
+          </button>
+        </mdb-card-body>
+        <!--/.Card content-->
+
+      </mdb-card>
+    </div>
+  </div>
+
+</div>

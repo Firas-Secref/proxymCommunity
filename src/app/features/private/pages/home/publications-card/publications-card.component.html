@@ -1,57 +1,26 @@
-<div class="">
-    <div class="ml-auto mr-auto">
-      <div class="media-area">
-        <div *ngFor="let p of postsInput" class="media">
-          <a class="float-left">
-            <div class="avatar">
-              <img class="media-object" [src]="'data:image/png;base64,'+p?.userImage" alt="...">
-            </div>
-          </a>
-          <div class="media-body">
-            <h4 class="media-heading">{{p?.firstName | uppercase}} {{p?.lastName | uppercase}}<small>· {{p?.department}}</small></h4>
-            <h6 class="text-muted"></h6>
 
-            <p>{{p?.text}}</p>
-
-            <div class="section col-md-10 ml-auto mr-auto ">
-                <div class="row">
-                  <div>
-                    <img class="img-raised rounded img-fluid" alt="Raised Image" [src]="'data:image/png;base64,'+p?.image1">
-                  </div>
-<!--                  <div class="col-md-4">-->
-<!--                    <img class="img-raised rounded img-fluid" alt="Raised Image" src="https://images.unsplash.com/photo-1540280369237-dea08361593a?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b7f031f7878a3c611ddce1db800a0a55&auto=format&fit=crop&w=600&h=800&q=60 2592w">-->
-<!--                  </div>-->
-                </div>
-              </div>
-            <div class="media-footer">
-              <a href="#pablo" class="btn btn-danger btn-link float-right">
-                <i class="material-icons">favorite</i>{{p?.likesNb}}
-              </a>
-            </div><hr>
-          </div>
+<div class="timeline-body" *ngFor="let p of postsInput">
+  <div class="timeline-header">
+    <span class="userimage" ><img style="width: 100%; height: 100%; " class="rounded-circle" [src]="'data:image/png;base64,'+p?.userImage" alt=""></span>
+    <span class="username" ><a href="javascript:;">{{p?.firstName}} {{p?.lastName}}</a> .<small>{{p?.userDepartment}}</small></span>
+  </div>
+  <div class="timeline-content" style="margin-top: 15px">
+    <p>
+      {{p?.text}}
+    </p>
+    <div class="section col-md-10 ml-auto mr-auto ">
+      <div class="row">
+        <div>
+          <img class="img-raised rounded img-fluid" style="border-radius: 30px" alt="Raised Image" [src]="'data:image/png;base64,'+p?.image1">
         </div>
-
-<!--        <div class="media">-->
-<!--          <a class="float-left" href="#pablo">-->
-<!--            <div class="avatar">-->
-<!--              <img class="media-object" alt="Tim Picture" src="assets/profile.jpg">-->
-<!--            </div>-->
-<!--          </a>-->
-<!--          <div class="media-body">-->
-<!--            <h4 class="media-heading">Firas Secref<small>· Yesterday</small></h4>-->
-
-<!--            <p>Hello guys, nice to have you on the platform! There will be a lot of great stuff coming soon. We will keep you posted for the latest news.</p>-->
-<!--            <p> Don't forget, You're Awesome!</p>-->
-
-<!--            <div class="media-footer">-->
-<!--              <a href="#pablo" class="btn btn-link float-right">-->
-<!--                <i class="material-icons">favorite</i> 25-->
-<!--              </a>-->
-<!--            </div>-->
-
-<!--          </div>-->
-<!--        </div>-->
-
       </div>
     </div>
+  </div>
+  <div class="timeline-footer">
+    <div class="stats">
+      <mdb-icon fas icon="heart" class="clickable" style="font-size: 20px; margin-left: 5px; margin-bottom: 2px; color: #0d4aa8"></mdb-icon>
+      <span class="stats-total" style="margin-left: 7px"><b>{{p?.likesNb}}</b></span>
+    </div>
+  </div>
+  <hr>
 </div>

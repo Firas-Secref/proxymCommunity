@@ -10,6 +10,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {NavbarComponent} from "./navbar/navbar.component";
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from "@angular/material/core";
+import {MDBBootstrapModule} from "angular-bootstrap-md";
 
 
 
@@ -27,7 +28,8 @@ import {MatNativeDateModule} from "@angular/material/core";
     MatIconModule,
     MatButtonModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MDBBootstrapModule
 
   ],
   exports: [

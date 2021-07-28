@@ -11,6 +11,9 @@ import {PublicationsCardComponent} from "./pages/home/publications-card/publicat
 import {SharedModule} from "../../shared/shared.module";
 import { PrivateRoutingModule } from './private-routing.module';
 import {MatStepperModule} from "@angular/material/stepper";
+import { CarouselComponent } from './pages/home/carousel/carousel.component';
+import {MDBBootstrapModule} from "angular-bootstrap-md";
+import { UsersListComponent } from './pages/home/users-list/users-list.component';
 
 
 
@@ -24,17 +27,22 @@ import {MatStepperModule} from "@angular/material/stepper";
     NewPostCardComponent,
     NewPubComponent,
     PublicationsCardComponent,
+    CarouselComponent,
+    UsersListComponent,
 
   ],
   exports: [
     ProfileComponent,
     EditProfileComponent,
+    CarouselComponent,
+    UsersListComponent,
   ],
   imports: [
     CommonModule,
     SharedModule,
     PrivateRoutingModule,
-    MatStepperModule
+    MatStepperModule,
+    MDBBootstrapModule
 
   ]
 })

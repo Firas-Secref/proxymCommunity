@@ -13,19 +13,30 @@ export class HomeComponent implements OnInit {
 
   user !: Developer;
   posts !: any;
+  allUsers!: any[];
+
+
   constructor(private service: UserService, private postService: PubService) { }
 
   ngOnInit(): void {
+
     this.service.getUserByUsername(localStorage.getItem("username")).pipe(
       mergeMap((data1: any)=>{
         this.user = data1
         return this.postService.getAllPosts().pipe(
-          map(data2 =>{
+          mergeMap(data2 =>{
             this.posts = data2;
+            return this.service.getAllUsers().pipe(
+              map(data3 =>{
+                this.allUsers = data3;
+              })
+            )
           })
         )
       })
     ).subscribe()
+
+
   }
 
 }
