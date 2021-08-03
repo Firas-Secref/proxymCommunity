@@ -11,12 +11,12 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatSelectModule} from "@angular/material/select";
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
-import {AuthenticationModule} from "./features/authentication/authentication.module";
 import {SharedModule} from "./shared/shared.module";
-import {PrivateModule} from "./features/private/private.module";
 import {MatStepperModule} from "@angular/material/stepper";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import {PrivateModule} from "./features/private/private.module";
+import {ToastrModule} from "ngx-toastr";
 
 @NgModule({
   declarations: [
@@ -25,8 +25,10 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut: 2000
+    }),
     MDBBootstrapModule.forRoot(),
-
 
     MatDialogModule,
     HttpClientModule,
@@ -36,12 +38,11 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
     MatButtonModule,
     MatStepperModule,
 
-    AuthenticationModule,
-    PrivateModule,
     SharedModule,
     AppRoutingModule,
     NgbModule,
-    MDBBootstrapModule.forRoot()
+    MDBBootstrapModule.forRoot(),
+    PrivateModule
 
   ],
   providers: [],

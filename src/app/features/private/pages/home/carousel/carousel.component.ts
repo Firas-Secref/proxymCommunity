@@ -1,6 +1,8 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {Developer} from "../../../../../model/Developer";
 import {Route, Router} from "@angular/router";
+import {Friends} from "../../../../../model/Friends";
+import {UserService} from "../../../services/user.service";
 
 @Component({
   selector: 'app-carousel',
@@ -9,10 +11,14 @@ import {Route, Router} from "@angular/router";
 })
 export class CarouselComponent implements OnInit, OnChanges {
 
-  constructor(private router: Router){}
+  constructor(private router: Router, private service: UserService){}
   @Input() suggestions!: Developer[];
+  user!: Developer
 
   ngOnInit() {
+    this.service.getUserByUsername(localStorage.getItem("username")).subscribe((user:Developer) =>{
+      this.user = user;
+    })
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -20,6 +26,18 @@ export class CarouselComponent implements OnInit, OnChanges {
   }
 
   navigateToUsersList() {
-    this.router.navigateByUrl("usersList")
+    this.router.navigateByUrl("home/usersList")
   }
+
+  follow(id: number, user: Developer) {
+    let friends = new Friends(this.user.id, id);
+    console.log(friends);
+    console.log(this.suggestions)
+    this.suggestions.splice(this.suggestions.indexOf(user),1)
+    this.service.follow(friends).subscribe((data: any)=>{
+      console.log("follow")
+      console.log(data)
+    })
+  }
+
 }

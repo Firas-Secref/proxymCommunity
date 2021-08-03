@@ -36,6 +36,7 @@ import { UsersListComponent } from './pages/home/users-list/users-list.component
     EditProfileComponent,
     CarouselComponent,
     UsersListComponent,
+    ChatComponent,
   ],
   imports: [
     CommonModule,

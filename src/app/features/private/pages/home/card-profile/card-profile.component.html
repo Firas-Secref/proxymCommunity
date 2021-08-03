@@ -6,7 +6,7 @@
               <div class="row justify-content-center">
                 <div class="col-lg-3 order-lg-2">
                   <div class="card-profile-image marge">
-                    <a href="#">
+                    <a (click)="goToProfile()" >
                       <img [src]="'data:image/png;base64,'+userInput?.profileImage" class="rounded-circle">
                     </a>
                   </div>
@@ -20,15 +20,15 @@
                   <div class="col">
                     <div class="card-profile-stats d-flex justify-content-center mt-md-5">
                       <div>
-                        <span class="heading">22</span>
+                        <span class="heading">{{follows}}</span>
                         <span class="description">Friends</span>
                       </div>
                       <div>
-                        <span class="heading">12</span>
-                        <span class="description">Publications</span>
+                        <span class="heading">{{postsNb}}</span>
+                        <span class="description">Posts</span>
                       </div>
                       <div>
-                        <span class="heading">89</span>
+                        <span class="heading">{{likesNb}}</span>
                         <span class="description">Likes</span>
                       </div>
                     </div>
@@ -36,7 +36,7 @@
                 </div>
                 <div class="text-center">
                   <h3>
-                    {{userInput?.firstName| uppercase}} {{userInput?.lastName | uppercase}}<span class="font-weight-light">, 23</span>
+                    {{userInput?.firstName| uppercase}} {{userInput?.lastName | uppercase}}<span class="font-weight-light">, {{userInput?.birthdate|age}}</span>
                   </h3>
                   <div class="h5 font-weight-300">
                     <i class="ni location_pin mr-2"></i>{{userInput?.ville}}, {{userInput?.address}}

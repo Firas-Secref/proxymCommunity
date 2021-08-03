@@ -30,10 +30,12 @@
                     <div class="form-group">
                       <label for="first_name"><b>First name</b> <small style="color: #9fa5b1"> (Required)</small> </label>
                       <input formControlName="firstname" type="text" name="first_name" id="first_name" placeholder="First Name"/>
+                      <small style="color: red" *ngIf="firstFormGroup.get('firstname').invalid && firstFormGroup.get('firstname').touched ">Field firstname must contain at least 2 characters</small>
                     </div>
                     <div class="form-group">
                       <label for="last_name"><b>Last name</b><small style="color: #9fa5b1"> (Required)</small></label>
                       <input formControlName="lastname" type="text" name="last_name" id="last_name" placeholder="Last Name" />
+                      <small style="color: red" *ngIf="firstFormGroup.get('lastname').invalid && firstFormGroup.get('lastname').touched ">Field lastname must contain at least 2 characters</small>
                     </div>
                   </div>
                 </form>
@@ -42,7 +44,7 @@
             </div>
           </fieldset>
           <div class="float-right">
-            <button (click)="check1()" class="btnSize" mat-raised-button matStepperNext color="primary">Next</button>
+            <button [disabled]="firstFormGroup.invalid" class="btnSize" mat-raised-button matStepperNext color="primary">Next</button>
           </div>
 
         </mat-step>
@@ -56,15 +58,19 @@
                 <div class="form-input">
                   <label for="username"><b>Username</b> <small style="color: #9fa5b1"> (Required)</small></label>
                   <input formControlName="username" type="text" name="street_name" id="username" placeholder="Username" />
+                  <small style="color: red" *ngIf="secondFormGroup.get('username').invalid && secondFormGroup.get('username').touched ">Field username must contain at least 2 characters</small>
+
                 </div>
                 <div class="form-input">
                   <label for="password"><b>Password</b> <small style="color: #9fa5b1"> (Required)</small></label>
                   <input formControlName="password" type="password" id="password" placeholder="Password" />
+                  <small style="color: red" *ngIf="secondFormGroup.get('password').invalid && secondFormGroup.get('password').touched ">Field password must contain at least 6 characters</small>
                 </div>
               </div>
               <div class="form-input">
                 <label for="email"><b>Email</b> <small style="color: #9fa5b1"> (Required)</small></label>
                 <input formControlName="email" type="email" name="email" id="email" placeholder="Email" />
+                <small style="color: red" *ngIf="secondFormGroup.get('email').invalid && secondFormGroup.get('email').touched ">You must enter a valid Email</small>
               </div>
 
 
@@ -73,6 +79,8 @@
                 <input formControlName="birthdate" [matDatepicker]="picker" placeholder="Birthdate" id="birthdate">
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
+                <small style="color: red" *ngIf="secondFormGroup.get('birthdate').invalid && secondFormGroup.get('birthdate').touched ">You must enter a valid Birthdate</small>
+
               </div>
 
             </div>
@@ -80,7 +88,7 @@
           </form>
 
           <br>
-          <button (click)="check2()" class="btnSize float-right" mat-raised-button matStepperNext color="primary">Next</button>
+          <button [disabled]="secondFormGroup.invalid" class="btnSize float-right" mat-raised-button matStepperNext color="primary">Next</button>
           <button class="btnSize float-left" mat-raised-button matStepperPrevious style="background-color: #9caec0">Previous</button>
 
         </mat-step>
@@ -111,7 +119,7 @@
 
           </fieldset>
           <br>
-          <button (click)="check3()" class="btnSize float-right" mat-raised-button matStepperNext color="primary">Next</button>
+          <button class="btnSize float-right" mat-raised-button matStepperNext color="primary">Next</button>
           <button class="btnSize float-left" mat-raised-button matStepperPrevious style="background-color: #9caec0">Previous</button>
 
 
@@ -128,10 +136,13 @@
                   <div class="form-input">
                     <label for="city"><b>City</b> <small style="color: #9fa5b1"> (Required)</small></label>
                     <input formControlName="city" type="text" name="city" id="city" placeholder="City" />
+                    <small style="color: red" *ngIf="thirdFormGroup.get('city').invalid && thirdFormGroup.get('city').touched ">Field city must contain at least 2 characters</small>
+
                   </div>
                   <div class="form-input">
                     <label for="country"><b>Country</b> <small style="color: #9fa5b1"> (Required)</small></label>
                     <input formControlName="country" type="text" name="country" id="country" placeholder="Country" />
+                    <small style="color: red" *ngIf="thirdFormGroup.get('country').invalid && thirdFormGroup.get('country').touched ">Field country must contain at least 2 characters</small>
                   </div>
                 </div>
 
@@ -142,6 +153,7 @@
                   <div class="form-input">
                     <label for="address"><b>Address</b> <small style="color: #9fa5b1"> (Required)</small></label>
                     <input formControlName="address" type="text" name="address" id="address" placeholder="Address" />
+                    <small style="color: red" *ngIf="thirdFormGroup.get('address').invalid && thirdFormGroup.get('address').touched ">Field address must contain at least 2 characters</small>
                   </div>
                   <div class="form-input">
                     <label for="department"><b>Department</b> <small style="color: #9fa5b1"> (Required)</small></label><br>
@@ -149,13 +161,15 @@
                       <option value="DigiX Team">DigiX Team</option>
                       <option value="Banking Lab">Banking Lab</option>
                     </select>
+                    <small style="color: red" *ngIf="thirdFormGroup.get('department').invalid && thirdFormGroup.get('department').touched ">Select your department</small>
+
                   </div>
                 </div>
               </div>
             </form>
           </fieldset>
           <br>
-          <button (click)="submit()" class="btnSize float-right" mat-raised-button matStepperNext color="primary">Submit</button>
+          <button [disabled]="thirdFormGroup.invalid" (click)="submit(); pushNotification()" class="btnSize float-right" mat-raised-button matStepperNext color="primary">Submit</button>
           <button class="btnSize float-left" mat-raised-button matStepperNext style="background-color: #9caec0">Previous</button>
 
         </mat-step>

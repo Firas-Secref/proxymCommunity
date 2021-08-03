@@ -1,5 +1,5 @@
 
-<div class="timeline-body" *ngFor="let p of postsInput">
+<div class="timeline-body" *ngFor="let p of postsInput; let i = index;">
   <div class="timeline-header">
     <span class="userimage" ><img style="width: 100%; height: 100%; " class="rounded-circle" [src]="'data:image/png;base64,'+p?.userImage" alt=""></span>
     <span class="username" ><a href="javascript:;">{{p?.firstName}} {{p?.lastName}}</a> .<small>{{p?.userDepartment}}</small></span>
@@ -18,9 +18,12 @@
   </div>
   <div class="timeline-footer">
     <div class="stats">
-      <mdb-icon fas icon="heart" class="clickable" style="font-size: 20px; margin-left: 5px; margin-bottom: 2px; color: #0d4aa8"></mdb-icon>
-      <span class="stats-total" style="margin-left: 7px"><b>{{p?.likesNb}}</b></span>
+      <mdb-icon id="dislike" *ngIf="p.ilikeIt" (click)="deleteLike(p.id, i)" fas icon="heart" class="clickable" style="font-size: 20px; margin-left: 5px; margin-bottom: 2px; color: #0d4aa8"></mdb-icon>
+      <mdb-icon id="like" *ngIf="!p.ilikeIt" (click)="updateLikes(p.id, i)" far icon="heart" class="clickable" style="font-size: 20px; margin-left: 5px; margin-bottom: 2px;"></mdb-icon>
+
+      <span class="stats-total" style="margin-left: 7px" id="likeNb"><b>{{p?.likesNb}}</b></span>
     </div>
   </div>
   <hr>
 </div>
+

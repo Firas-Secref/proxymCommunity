@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {Developer} from "../../../../../model/Developer";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-card-profile',
@@ -9,9 +10,14 @@ import {Developer} from "../../../../../model/Developer";
 export class CardProfileComponent implements OnInit, OnChanges {
 
   @Input() userInput!: Developer;
-  constructor() { }
+  @Input() postsNb!: number;
+  @Input() follows!: number;
+  @Input() likesNb!: number;
+
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+    console.log()
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -20,4 +26,7 @@ export class CardProfileComponent implements OnInit, OnChanges {
     }
   }
 
+  goToProfile() {
+    this.router.navigateByUrl("home/profile")
+  }
 }

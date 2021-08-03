@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Developer} from "../../../model/Developer";
 import {environment} from "../../../../environments/environment";
+import {Friends} from "../../../model/Friends";
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,8 @@ export class UserService {
   private updateUserUrl = environment.updateUser;
   private updateImage = environment.updateProfileImage;
   private allUsersUrl = environment.getAllUsersUrl;
+  private followUrl = environment.followUrl;
+  private followListUrl = environment.followListUrl;
   constructor(private http: HttpClient) { }
 
   getUserByUsername(username: string | null): Observable<Developer>{
@@ -28,8 +31,16 @@ export class UserService {
     return this.http.post<any>(`${this.updateImage}/${id}`, image)
   }
 
-  getAllUsers(): Observable<any>{
-    return this.http.get<any>(`${this.allUsersUrl}`);
+  getAllUsers(id: number): Observable<any>{
+    return this.http.get<any>(`${this.allUsersUrl}/${id}`);
+  }
+
+  follow(friends: Friends): Observable<any>{
+    return this.http.post<any>(`${this.followUrl}`, friends)
+  }
+
+  getMyFollowsList(id: number): Observable<any[]>{
+    return this.http.get<any>(`${this.followListUrl}/${id}`);
   }
 
 }

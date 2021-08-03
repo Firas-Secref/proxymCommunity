@@ -3,11 +3,12 @@ import {Developer} from "./Developer";
 
 export class Likes {
   id!: number;
-  publicationLiked!: Publication;
-  developerLike!: Developer;
+  liker_Id!: number;
+  post_Id!: number;
 
-  constructor(post: Publication, user: Developer) {
-    this.publicationLiked = post;
-    this.developerLike = user;
+
+  constructor(liker_Id: number, post_Id: number) {
+    this.liker_Id = liker_Id;
+    this.post_Id = post_Id;
   }
 }

@@ -17,7 +17,7 @@
                     <div class="story-author alligner">
                         <p class="name">{{s?.firstName}} {{s?.lastName}} . <small>{{s?.departement}}</small></p>
                         <p class="time">{{s?.profile}}</p>
-                      <mdb-icon fas icon="user-plus" style="color: #2C93FF"></mdb-icon>
+                      <mdb-icon (click)="follow(s.id, s)" class="hov" fas icon="user-plus"></mdb-icon>
                     </div>
                   </div>
                 </div>

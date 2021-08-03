@@ -1,3 +1,4 @@
+<app-navbar></app-navbar>
 <div class="main-content">
 
   <!-- Header -->
@@ -14,12 +15,14 @@
             <div class="col-lg-3 order-lg-2">
               <div class="card-profile-image">
                 <div class="form-file">
-                  <input hidden type="file" class="inputfile" name="your_picture" id="your_picture"  (change)="readURL($event)"/>
+                  <input hidden type="file" class="inputfile" name="your_picture" id="your_picture"  (change)="onFileChanged($event)"/>
                   <label for="your_picture">
                     <figure>
-                      <img *ngIf="!imageUrl" [src]="avatar" alt="" class="your_picture_image rounded-circle">
+                      <img *ngIf="!imageUrl && !currentDev?.profileImage"  src="assets/profileImgNotSelected.png" alt="" class="your_picture_image rounded-circle">
                       <img *ngIf="imageUrl" [src]="imageUrl" alt="" class="your_picture_image rounded-circle">
+                      <img *ngIf="!imageUrl" [src]="'data:image/png;base64,'+currentDev?.profileImage" alt="" class="your_picture_image rounded-circle">
                     </figure>
+                    <span hidden class="file-button">choose picture</span>
                   </label>
                 </div>
               </div>
@@ -54,16 +57,16 @@
           <div class="card-header bg-white border-0">
             <div class="row align-items-center">
               <div class="col-8">
-                <h3 class="mb-0">Mon compte</h3>
+                <h3 class="mb-0">My Account</h3>
               </div>
               <div class="col-4 text-right">
-                <a  (click)="validateChanges()" class="btn btn-sm btn-primary" style="color: white">Modifier</a>
+                <a  (click)="validateChanges()" class="btn btn-sm btn-primary" style="color: white">Edit</a>
               </div>
             </div>
           </div>
           <div class="card-body">
             <form [formGroup]="profileForm">
-              <h6 class="heading-small text-muted mb-4">informations génerales</h6>
+              <h6 class="heading-small text-muted mb-4">General informations</h6>
               <div class="pl-lg-4">
                 <div class="row">
                   <div class="col-lg-6">
@@ -82,13 +85,13 @@
                 <div class="row">
                   <div class="col-lg-6">
                     <div class="form-group focused">
-                      <label class="form-control-label" for="input-first-name">Nom</label>
+                      <label class="form-control-label" for="input-first-name">First name</label>
                       <input type="text" formControlName="nom" id="input-first-name" class="form-control form-control-alternative" placeholder="nom">
                     </div>
                   </div>
                   <div class="col-lg-6">
                     <div class="form-group focused">
-                      <label class="form-control-label" for="input-last-name">Prenom</label>
+                      <label class="form-control-label" for="input-last-name">Last name</label>
                       <input type="text" formControlName="prenom" id="input-last-name" class="form-control form-control-alternative" placeholder="Last name" value="Jesse">
                     </div>
                   </div>
@@ -108,7 +111,7 @@
                   </div>
                   <div class="col-lg-6">
                     <div class="form-group focused">
-                      <label class="form-control-label" for="input-last-name">Departement</label>
+                      <label class="form-control-label" for="input-last-name">Department</label>
                       <div class="input-group mb-3">
                         <select formControlName="departement" class="custom-select form-control-alternative colorr" (change)="changeDepartment($event)" >
                           <option *ngFor="let dep of departement" value="{{dep}}">{{dep}}</option>
@@ -120,7 +123,7 @@
               </div>
               <hr class="my-4">
               <!-- Address -->
-              <h6 class="heading-small text-muted mb-4">Informations personnelles</h6>
+              <h6 class="heading-small text-muted mb-4">personnel Informations </h6>
               <div class="pl-lg-4">
                 <div class="row">
                   <div class="col-md-12">
@@ -133,13 +136,13 @@
                 <div class="row">
                   <div class="col-lg-4">
                     <div class="form-group focused">
-                      <label class="form-control-label" for="input-city">Ville</label>
+                      <label class="form-control-label" for="input-city">City</label>
                       <input formControlName="ville" type="text" id="input-city" class="form-control form-control-alternative" placeholder="Ville">
                     </div>
                   </div>
                   <div class="col-lg-4">
                     <div class="form-group focused">
-                      <label class="form-control-label" for="input-country">Pays</label>
+                      <label class="form-control-label" for="input-country">Country</label>
                       <input formControlName="pays" type="text" id="input-country" class="form-control form-control-alternative" placeholder="Pays">
                     </div>
                   </div>
@@ -153,7 +156,7 @@
               </div>
               <hr class="my-4">
               <!-- Description -->
-              <h6 class="heading-small text-muted mb-4">A propos</h6>
+              <h6 class="heading-small text-muted mb-4">About me</h6>
               <div class="pl-lg-4">
                 <div class="form-group focused">
                   <textarea formControlName="aPropos" rows="4" class="form-control form-control-alternative" placeholder="A few words about you ..."></textarea>

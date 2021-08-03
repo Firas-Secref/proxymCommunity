@@ -1,6 +1,13 @@
+<app-navbar></app-navbar>
+<div class="d-flex justify-content-center" style="margin-top: 50%;" *ngIf="!likesNb && !user && !posts && !allUsers && !postsNb && !friends">
+  <div class="spinner-border spinner-grow-sm " role="status" style="height: 65px; width: 65px; font-size: 35px; color: #0d47a1">
+    <span class="visually-hidden" >Loading...</span>
+  </div>
+</div>
+
 <div class="row margen">
   <div class="col-md-4">
-    <app-card-profile [userInput]="user"></app-card-profile>
+    <app-card-profile [userInput]="user" [postsNb]="postsNb" [follows]="friends" [likesNb]="likesNb" ></app-card-profile>
     <app-carousel [suggestions]="allUsers"></app-carousel>
   </div>
   <div class="col-md-8 marge" >
@@ -23,3 +30,5 @@
     </div>
   </div>
 </div>
+
+

@@ -4,6 +4,9 @@ import {Developer} from "../../../../model/Developer";
 import {allProfiles} from "../../../../core/profile";
 import {RegisterService} from "../../services/register.service";
 import {DatePipe} from "@angular/common";
+import {Router} from "@angular/router";
+import {ToastrService} from "ngx-toastr";
+
 
 @Component({
   selector: 'app-register2',
@@ -24,7 +27,7 @@ export class Register2Component implements OnInit {
   department!: string;
   birthdate!: any;
   constructor(private fb: FormBuilder, private service: RegisterService,
-              private datePipe: DatePipe) { }
+              private datePipe: DatePipe, private router: Router, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.initForm();
@@ -33,8 +36,8 @@ export class Register2Component implements OnInit {
 
   initForm(){
     this.firstFormGroup = this.fb.group({
-      firstname: ["", [Validators.required, Validators.maxLength(20), Validators.minLength(5)]],
-      lastname: ["", [Validators.required, Validators.maxLength(20), Validators.minLength(5)]]
+      firstname: ["", [Validators.required, Validators.maxLength(20), Validators.minLength(2)]],
+      lastname: ["", [Validators.required, Validators.maxLength(20), Validators.minLength(2)]]
     });
 
     this.secondFormGroup = this.fb.group({
@@ -45,9 +48,9 @@ export class Register2Component implements OnInit {
     });
 
     this.thirdFormGroup = this.fb.group({
-      city: ["", [Validators.required]],
-      country: ["", [Validators.required]],
-      address: ["", [Validators.required]],
+      city: ["", [Validators.required, Validators.minLength(3)]],
+      country: ["", [Validators.required, Validators.minLength(3)]],
+      address: ["", [Validators.required, Validators.minLength(3)]],
       department: ["", [Validators.required]],
     });
 
@@ -97,6 +100,7 @@ export class Register2Component implements OnInit {
       document.getElementById("email")!.classList.remove("required");
       document.getElementById("birthdate")!.classList.remove("required");
     }
+
   }
 
   check3() {
@@ -106,13 +110,15 @@ export class Register2Component implements OnInit {
   submit() {
     this.birthdate=this.datePipe.transform(this.secondFormGroup.value.birthdate,
       'yyyy-MM-dd')!;
-
+    let cc = Date.parse(this.birthdate)
+    console.log(cc)
     console.log(this.birthdate)
     this.user = new Developer(
       this.firstFormGroup.value.firstname,
       this.firstFormGroup.value.lastname,
       this.secondFormGroup.value.username,
       this.secondFormGroup.value.password,
+      cc.toString(),
       // this.datePipe.transform(this.secondFormGroup.value.birthdate,
       //   'yyyy-MM-dd'),
       this.secondFormGroup.value.email,
@@ -133,6 +139,8 @@ export class Register2Component implements OnInit {
       console.log("register OK !!")
       console.log(data)
     })
+    this.router.navigateByUrl("auth/login");
+
   }
 
   checkCheckBoxvalue($event: any) {
@@ -143,5 +151,9 @@ export class Register2Component implements OnInit {
   getDepartment($event: any) {
     this.department=$event.target.value
     console.log(this.department)
+  }
+
+  pushNotification() {
+    this.toastr.success("Register Completed ..")
   }
 }

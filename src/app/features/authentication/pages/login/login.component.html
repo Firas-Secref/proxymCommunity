@@ -5,8 +5,8 @@
             <div class="header-body text-center mb-7">
               <div class="row justify-content-center">
                 <div class="col-lg-5 col-md-6">
-                  <h1 class="text-white">Bienvenue!</h1>
-                  <p class="text-lead text-light">Partagez et restez en contact avec vos collègues.</p>
+                  <h1 class="text-white">Welcome!</h1>
+                  <p class="text-lead text-light">Connect with friends and colleagues.</p>
                 </div>
               </div>
             </div>
@@ -43,6 +43,7 @@
                         </div>
                         <input formControlName="username" class="form-control" placeholder="username" type="text">
                       </div>
+<!--                      <span class="spanColor">You have to enter a valid username</span>-->
                     </div>
                     <div class="form-group">
                       <div class="input-group input-group-alternative">
@@ -59,7 +60,7 @@
                       </label>
                     </div>
                     <div class="text-center">
-                      <button type="button" class="btn btn-primary my-4" (click)="login()">Sign in</button>
+                      <button [disabled]="!loginForm.valid" type="button" class="btn btn-primary my-4" (click)="login()">Sign in</button>
                     </div>
                   </form>
                 </div>
@@ -69,7 +70,7 @@
                   <a href="#" class="text-light"><small>Forgot password?</small></a>
                 </div>
                 <div class="col-6 text-right">
-                  <a href="#" class="text-light"><small>Create new account</small></a>
+                  <a (click)="goToRegister()" class="text-light"><small>Create new account</small></a>
                 </div>
               </div>
             </div>

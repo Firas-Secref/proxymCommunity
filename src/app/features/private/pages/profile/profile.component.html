@@ -1,3 +1,5 @@
+<app-navbar></app-navbar>
+
 <div class="profile-page sidebar-collapse">
 
   <div class="page-header header-filter" data-parallax="true" style="background-image:url('assets/couverture.png');"></div>
@@ -33,19 +35,15 @@
             <ul class="nav nav-pills nav-pills-icons justify-content-center" role="tablist">
               <li class="nav-item">
                 <a class="nav-link active" href="#work" role="tab" data-toggle="tab">
-                  <i class="material-icons">dashboard</i> Publications
+                  <i class="material-icons">dashboard</i> My posts
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#users" role="tab" data-toggle="tab">
-                  <i class="material-icons">group</i> Utilisateurs
+                  <i class="material-icons">group</i> Follows
                 </a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#conversation" role="tab" data-toggle="tab">
-                  <i class="material-icons">chat</i> Conversations
-                </a>
-              </li>
+
             </ul>
           </div>
         </div>
@@ -62,7 +60,7 @@
 
                 <div class="ml-auto mr-auto">
                   <div class="media-area">
-                    <div class="timeline-body" *ngFor="let p of myPosts">
+                    <div class="timeline-body" *ngFor="let p of myPosts; let i = index;">
                       <div class="timeline-header">
                         <span class="userimage" ><img style="width: 100%; height: 100%; " class="rounded-circle" [src]="'data:image/png;base64,'+p?.userImage" alt=""></span>
                         <span class="username" ><a href="javascript:;">{{p?.firstName}} {{p?.lastName}}</a>. <small>{{p?.userDepartment}}</small></span>
@@ -83,7 +81,8 @@
 
                       <div class="timeline-footer">
                         <div class="stats">
-                          <mdb-icon fas icon="heart" class="clickable" style="font-size: 20px; margin-left: 5px; margin-bottom: 2px; color: #0d4aa8"></mdb-icon>
+                          <mdb-icon id="dislike" *ngIf="p.ilikeIt" (click)="deleteLike(p.id, i)" fas icon="heart" class="clickable" style="font-size: 20px; margin-left: 5px; margin-bottom: 2px; color: #0d4aa8"></mdb-icon>
+                          <mdb-icon id="like" *ngIf="!p.ilikeIt" (click)="updateLikes(p.id, i)" far icon="heart" class="clickable" style="font-size: 20px; margin-left: 5px; margin-bottom: 2px;"></mdb-icon>
                           <span class="stats-total" style="margin-left: 7px"><b>{{p?.likesNb}}</b></span>
                         </div>
                       </div>
@@ -102,24 +101,24 @@
         <div class="tab-pane connections" id="users">
           <div class="row">
 
-            <div class="col-md-5 mr-auto ml-auto">
+            <div *ngFor="let friend of friends" class="col-md-5 mr-auto ml-auto">
               <div class="card card-profile card-plain">
                 <div class="row">
                   <div class="col-md-5">
                     <div class="card-header card-header-image">
-                      <a href="#pablo">
-                        <img class="img" src="http://new.kevinrees.com/wp-content/uploads/2016/12/Kevin-Portrait-Square.jpg">
+                      <a href="">
+                        <img class="img" [src]="'data:image/png;base64,'+friend?.profileImage">
                       </a>
                       <div class="colored-shadow" style="background-image: url('http://new.kevinrees.com/wp-content/uploads/2016/12/Kevin-Portrait-Square.jpg'); opacity: 1;"></div></div>
                   </div>
                   <div class="col-md-7">
                     <div class="card-body">
-                      <h4 class="card-title">Marc Jacobs</h4>
-                      <h6 class="card-category text-muted">Designer</h6>
+                      <h4 class="card-title">{{friend?.firstName}} {{friend?.lastName}}</h4>
+                      <h6 class="card-category text-muted">{{friend?.profile}} - {{friend?.departement}}</h6>
 
-                      <p class="card-description">
-                        Don't be scared of the truth because we need to restart the human foundation in truth...
-                      </p>
+<!--                      <p class="card-description">-->
+<!--                        Don't be scared of the truth because we need to restart the human foundation in truth...-->
+<!--                      </p>-->
                     </div>
                   </div>
                 </div>

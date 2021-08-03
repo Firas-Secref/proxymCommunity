@@ -13,7 +13,12 @@ export const environment = {
   allPostsUrl: 'http://localhost:8080/getAllPosts',
   myPostsUrl: 'http://localhost:8080/myPosts',
   likePostUrl: 'http://localhost:8080/like',
-  getAllUsersUrl: 'http://localhost:8080/allUsers'
+  getAllUsersUrl: 'http://localhost:8080/allUsers',
+  followUrl: 'http://localhost:8080/follow',
+  followListUrl: 'http://localhost:8080/followList',
+  likesNbUrl: 'http://localhost:8080/likesNb',
+  deleteLikeUrl: 'http://localhost:8080/deleteLike',
+  myFriendsPostsUrl: 'http://localhost:8080/getFriendsPosts'
 
 };
 

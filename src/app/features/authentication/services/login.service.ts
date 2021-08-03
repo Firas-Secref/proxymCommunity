@@ -14,4 +14,8 @@ export class LoginService {
   public login(user: any):Observable<any>{
     return this.http.post<any>(`${this.loginUrl}`, user)
   }
+
+  loggedIn(){
+    return !!localStorage.getItem("username");
+  }
 }

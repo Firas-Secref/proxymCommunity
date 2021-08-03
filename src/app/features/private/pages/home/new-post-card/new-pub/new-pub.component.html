@@ -24,7 +24,7 @@
         <textarea placeholder="Quoi de neuf ?" formControlName="text" cols="170" rows="6"></textarea>
       </form>
       <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12" >
           <img *ngIf="loaded1" class="stylingImg" [src]="loaded1">
         </div>
       </div>
@@ -43,7 +43,7 @@
 </div>
 <br>
 
-<div class="d-flex justify-content-center fixed-bottom">
+<div class="d-flex justify-content-center">
   <button mat-raised-button mat-dialog-close color="primary" style="margin-right: 65px" (click)="publier()">Publier</button>
   <button mat-raised-button mat-dialog-close color="warn" style="margin-left: 65px">Abondonner</button>
 </div>

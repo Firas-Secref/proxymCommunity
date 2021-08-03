@@ -4,6 +4,7 @@ import {HomeComponent} from "./pages/home/home.component";
 import {ProfileComponent} from "./pages/profile/profile.component";
 import {EditProfileComponent} from "./pages/edit-profile/edit-profile.component";
 import {UsersListComponent} from "./pages/home/users-list/users-list.component";
+import {ChatComponent} from "./pages/chat/chat.component";
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: "usersList",
     component: UsersListComponent
+  },
+  {
+    path: "chat",
+    component: ChatComponent
   }
 
 

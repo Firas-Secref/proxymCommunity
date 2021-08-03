@@ -29,8 +29,12 @@ export class LoginComponent implements OnInit {
     this.service.login(this.loginForm.value).subscribe((data: boolean)=>{
       if(data){
         localStorage.setItem("username", this.loginForm.value.username)
-        this.router.navigateByUrl("accueil");
+        this.router.navigateByUrl("home");
       }
     })
+  }
+
+  goToRegister() {
+    this.router.navigateByUrl("auth/register")
   }
 }

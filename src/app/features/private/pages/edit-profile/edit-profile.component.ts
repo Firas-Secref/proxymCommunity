@@ -84,15 +84,16 @@ export class EditProfileComponent implements OnInit {
     const codePostal = this.profileForm.value.codePostal;
     const aPropos = this.profileForm.value.aPropos;
 
-    let user = new Developer(nom, prenom, username, email, ville, address, pays, departement, profile, codePostal, aPropos);
-    console.log("new", user)
-    console.log(this.currentDev)
+    let user = new Developer(nom, prenom, username,this.currentDev.password, this.currentDev.birthdate, this.currentDev.email, ville, address, pays, departement, profile, codePostal);
 
-    // console.log("qsxfwfsdf", user)
-    // this.service.updateUser(this.currentDev.id, user).subscribe((data: any) => {
-    //   console.log("updated");
-    //   console.log(data)
-    // })
+    this.currentDev.firstName = nom;
+    this.currentDev.lastName = prenom;
+    this.currentDev.email = email;
+    this.currentDev.profile = profile;
+    this.currentDev.departement = departement
+    this.service.updateUser(this.currentDev.id, user).subscribe((data: any) => {
+      console.log("updated");
+    })
   }
 
   changeDepartment($event: any) {
@@ -108,7 +109,7 @@ export class EditProfileComponent implements OnInit {
     this.updateImage(this.profileImg)
 
     reader.onload = () => {
-      this.avatar = reader.result;
+      this.imageUrl = reader.result;
     }
   }
 
