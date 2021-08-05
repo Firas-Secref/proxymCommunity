@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {Developer} from "../../../../../model/Developer";
 import {Route, Router} from "@angular/router";
 import {Friends} from "../../../../../model/Friends";
@@ -12,6 +12,7 @@ import {UserService} from "../../../services/user.service";
 export class CarouselComponent implements OnInit, OnChanges {
 
   constructor(private router: Router, private service: UserService){}
+  @Output() sendNewFriend = new EventEmitter<number>();
   @Input() suggestions!: Developer[];
   user!: Developer
 
@@ -37,6 +38,8 @@ export class CarouselComponent implements OnInit, OnChanges {
     this.service.follow(friends).subscribe((data: any)=>{
       console.log("follow")
       console.log(data)
+      this.sendNewFriend.emit(1);
+
     })
   }
 

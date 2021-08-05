@@ -143,3 +143,41 @@ input {
 .pading{
   margin-top: 10px;
 }
+
+.padingHeader{
+  padding: 8px;
+  height: 40px;
+}
+textarea:focus{
+  outline: #e8e8e8;
+}
+
+textarea{
+  margin-left: 12px;
+  border: #e8e8e8;
+}
+
+textarea{
+  width: 100%;
+  font-size: 18px;
+  color: #4a4b65;
+  border-bottom: #c8cbcf;
+}
+
+.custombtn{
+  color: #c8cbcf;
+  font-size: 16px;
+  font-weight: bold;
+  text-shadow: 0px 1px 1px 0px #000;
+  background-color: #0d47a1 ;
+  padding: 8px 28px ;
+  cursor: pointer;
+  border-radius: 12px;
+  box-shadow: 0px 1px 2px 1px;
+}
+
+.stylingImg{
+  height: 40%;
+  width: 40%;
+  border-radius: 12px;
+}

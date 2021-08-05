@@ -40,6 +40,7 @@ export class EditProfileComponent implements OnInit {
         departement: data.departement,
         address: data.address,
         pays: data.pays,
+        ville: data.ville,
         codePostal: data.codePostal,
         // aPropos: data.aPropos
       })

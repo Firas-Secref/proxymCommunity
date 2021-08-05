@@ -13,7 +13,7 @@ import {Publication} from "../../../../model/Publication";
 export class HomeComponent implements OnInit {
 
   user !: Developer;
-  posts !: any;
+  posts !: any[];
   allUsers!: any[];
   postsNb!: number;
   friends!: number;
@@ -25,10 +25,11 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.service.getUserByUsername(localStorage.getItem("username")).pipe(
       mergeMap((data1: any)=>{
-        this.user = data1
+        this.user = data1;
         return this.postService.getMyFriendsPosts(this.user.id).pipe(
           mergeMap(data2 =>{
             this.posts = data2;
+            console.log(data2);
             return this.service.getAllUsers(this.user.id).pipe(
               mergeMap(data3 =>{
                 this.allUsers = data3;
@@ -57,10 +58,21 @@ export class HomeComponent implements OnInit {
     // this.allLikesIhave();
   }
 
-  // allLikesIhave(){
-  //   this.myPosts.forEach(post =>{
-  //     this.likesNb+= post.likesNb;
-  //   })
-  // }
+  getNewFriend($event: number) {
+    this.friends+=$event
+  }
 
+  getNewPost($event: any) {
+    console.log("aaaaa",$event)
+    this.posts.unshift($event);
+    this.postsNb+=1;
+  }
+
+  addLike($event: number) {
+    this.likesNb+=1;
+  }
+
+  removeLike($event: number) {
+    this.likesNb-=1;
+  }
 }

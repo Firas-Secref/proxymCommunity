@@ -8,7 +8,7 @@
 <div class="row margen">
   <div class="col-md-4">
     <app-card-profile [userInput]="user" [postsNb]="postsNb" [follows]="friends" [likesNb]="likesNb" ></app-card-profile>
-    <app-carousel [suggestions]="allUsers"></app-carousel>
+    <app-carousel [suggestions]="allUsers" (sendNewFriend)="getNewFriend($event)" ></app-carousel>
   </div>
   <div class="col-md-8 marge" >
     <div class="container mt-7 overflow-auto">
@@ -16,14 +16,14 @@
 
         <div class="card card-profile shadow">
           <div class="card-body pt-0 pt-md-4 ">
-            <app-new-post-card [userInput]="user"></app-new-post-card>
+            <app-new-post-card [userInput]="user" (updatePosts)="getNewPost($event)"></app-new-post-card>
           </div>
         </div>
         <br>
 
         <div class="card card-profile shadow">
           <div class="card-body pt-0 pt-md-4">
-            <app-publications-card [postsInput]="posts" [userInput]="user"></app-publications-card>
+            <app-publications-card [postsInput]="posts" [userInput]="user" (addNewLike)="addLike($event)" (removeLike)="removeLike($event)"></app-publications-card>
           </div>
         </div>
       </div>

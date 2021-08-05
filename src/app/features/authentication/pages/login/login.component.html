@@ -60,7 +60,7 @@
                       </label>
                     </div>
                     <div class="text-center">
-                      <button [disabled]="!loginForm.valid" type="button" class="btn btn-primary my-4" (click)="login()">Sign in</button>
+                      <button [disabled]="!loginForm.valid" type="button" class="btn btn-primary my-4" (click)="login(content)">Sign in</button>
                     </div>
                   </form>
                 </div>
@@ -78,3 +78,20 @@
         </div>
       </div>
     </div>
+
+<ng-template #content let-modal>
+  <div class="modal-header" style="background-color: #F80000; border-color: #F80000" >
+    <h4 class="modal-title" style="color: white">Something wrong</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body"style="background-color: #f80000" >
+    <p style="color: white">Please verify your credentials</p>
+  </div>
+  <div class="modal-footer" style="background-color: #d80000;">
+    <button style="color: white" ngbAutofocus  type="button" class="btn btn-link" (click)="modal.close('Close click')">Close</button>
+  </div>
+
+
+</ng-template>

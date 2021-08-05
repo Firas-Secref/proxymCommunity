@@ -5,8 +5,54 @@
     <img class="rounded-circle" [src]="'data:image/png;base64,'+userInput?.profileImage" alt="" />
   </div>
     <div>
-      <button class="btn btn-primary btn-round font-weight-normal" type="button" (click)="openDialog()">
+      <button class="btn btn-primary btn-round font-weight-normal" type="button" (click)="openDialog(content)">
         <i class="now-ui-icons"></i> What's new, {{userInput?.firstName| uppercase}} ?
       </button>
     </div>
   </div>
+
+<ng-template #content let-modal>
+    <div class="modal-header padingHeader">
+      <h3 style="padding-top: 15px; margin-left: 5px;"><b>Add new post</b></h3>
+      <button style="margin-right: 0px" type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+
+      <div class="row">
+        <div class="col-md-4">
+          <div class="d-flex align-items-center ">
+            <div class="dropdown-list-image mr-3">
+              <img class="rounded-circle" [src]="'data:image/png;base64,'+userInput?.profileImage" alt="" />
+            </div>
+            <div class="font-weight-bold mr-3">
+              <div class="text-truncate">{{userInput?.firstName| uppercase}} {{userInput?.lastName| uppercase}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div>
+        <form [formGroup]="publicationForm">
+          <textarea formControlName="text" placeholder="Whats new ?" cols="60" rows="6"></textarea>
+        </form>
+        <br>
+        <div class="row d-flex justify-content-center">
+          <img *ngIf="loaded1" class="stylingImg" [src]="loaded1">
+        </div>
+        <br>
+      </div>
+      <div>
+        <input type="file" id="customButton" style="display: none;" (change)="onFileChanged($event)">
+        <label for="customButton" class="custombtn"><i class="fas fa-image"></i> Add to your post</label>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <div class="d-flex ">
+          <button style="background-color: #890000" type="button" mdbBtn class="waves-light" aria-label="Close" (click)="modal.dismiss('Cross click')" mdbWavesEffect>Cancel</button>
+          <button style="background-color: #0d47a1" type="button" mdbBtn class="relative waves-light" mdbWavesEffect (click)="publier(); modal.dismiss('Cross click')" >Share</button>
+      </div>
+    </div>
+</ng-template>
+

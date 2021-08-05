@@ -26,7 +26,7 @@ import {ToastrModule} from "ngx-toastr";
     BrowserModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
-      timeOut: 2000
+      timeOut: 2500
     }),
     MDBBootstrapModule.forRoot(),
 

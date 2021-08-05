@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {UserService} from "../../../services/user.service";
 import {Developer} from "../../../../../model/Developer";
 import {map, mergeMap} from "rxjs/operators";

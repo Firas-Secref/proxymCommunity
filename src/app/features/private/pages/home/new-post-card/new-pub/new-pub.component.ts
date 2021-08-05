@@ -64,7 +64,7 @@ export class NewPubComponent implements OnInit {
         formData.append("user", JSON.stringify(data1));
         return this.pubService.newPost(formData).pipe(
           map(data2 =>{
-            console.log(data2)
+            console.log("aaa")
 
           })
         )
