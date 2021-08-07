@@ -18,8 +18,7 @@ import {InteractionService} from "../../../services/interaction.service";
 })
 export class NewPostCardComponent implements OnInit, OnChanges {
 
-  constructor(private dialog: MatDialog, private modalService: NgbModal,
-              private pubSservice : PubService, private fb: FormBuilder,
+  constructor(private modalService: NgbModal, private pubSservice : PubService, private fb: FormBuilder,
               private userService: UserService, private toastr: ToastrService, private interaction: InteractionService) { }
   @Input() userInput!: Developer;
   @Output() updatePosts = new EventEmitter<any>()

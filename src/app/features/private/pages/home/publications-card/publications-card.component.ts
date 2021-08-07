@@ -2,8 +2,11 @@ import {Component, DoCheck, EventEmitter, Input, OnChanges, OnInit, Output} from
 import {Likes} from "../../../../../model/Likes";
 import {PubService} from "../../../services/pub.service";
 import {Developer} from "../../../../../model/Developer";
-import {Publication} from "../../../../../model/Publication";
 import {InteractionService} from "../../../services/interaction.service";
+// @ts-ignore
+import * as SockJS from "sockjs-client";
+import * as Stomp from "stompjs";
+import {Notification} from "../../../../../model/Notification";
 
 @Component({
   selector: 'app-publications-card',
@@ -17,10 +20,16 @@ export class PublicationsCardComponent implements OnInit, OnChanges {
   @Output() addNewLike = new EventEmitter<number>();
   @Output() removeLike = new EventEmitter<number>();
 
+
+  greetings: string[] = [];
+  disabled = true;
+  name!: string;
+  private stompClient: any = null;
+
   constructor(private postService: PubService, private interaction: InteractionService) { }
 
   ngOnInit(): void {
-
+    this.connect()
   }
 
   ngOnChanges(): void {
@@ -29,7 +38,12 @@ export class PublicationsCardComponent implements OnInit, OnChanges {
   }
 
   updateLikes(id: number, i: number) {
-    console.log(this.postsInput[i].id)
+
+    const notification: Notification = new Notification(this.userInput.id, this.userInput.firstName, this.userInput.lastName, this.userInput.username,
+      this.postsInput[i].firstName, this.postsInput[i].lastName, this.postsInput[i].username, this.postsInput[i].userId, this.userInput.profileImage, "like");
+    console.log(notification)
+    this.sendName(notification)
+
     if(this.postsInput[i].userId == this.userInput.id){
       this.addNewLike.emit(1);
     }
@@ -53,10 +67,54 @@ export class PublicationsCardComponent implements OnInit, OnChanges {
     })
   }
 
-  // getPostLikesNb(id: number){
-  //   this.postService.getLikeNb(id).subscribe((data: number)=>{
-  //     this.postsInput.likesNb = data;
-  //   });
-  // }
+
+
+  connect() {
+    const socket = new SockJS('http://localhost:8080/notification-endpoint');
+    this.stompClient = Stomp.over(socket);
+
+    const _this = this;
+    this.stompClient.connect({}, function (frame: any) {
+      _this.setConnected(true);
+      console.log('Connected: ' + frame);
+
+      _this.stompClient.subscribe('/topic/newNotif', function (hello: any) {
+        _this.interaction.sendData({
+          "newNotification":JSON.parse(hello.body),
+          "updateBadge": true
+        })
+      });
+    });
+  }
+
+  disconnect() {
+    if (this.stompClient != null) {
+      this.stompClient.disconnect();
+    }
+
+    this.setConnected(false);
+    console.log('Disconnected!');
+  }
+
+  sendName(notification: Notification) {
+    this.stompClient.send(
+      '/notif/notification',
+      {},
+      JSON.stringify(notification)
+    );
+  }
+
+  setConnected(connected: boolean) {
+    this.disabled = !connected;
+
+    if (connected) {
+      this.greetings = [];
+    }
+  }
+
+  showGreeting(message: string) {
+    this.greetings.push(message);
+  }
+
 
 }

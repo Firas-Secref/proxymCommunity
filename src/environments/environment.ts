@@ -18,7 +18,8 @@ export const environment = {
   followListUrl: 'http://localhost:8080/followList',
   likesNbUrl: 'http://localhost:8080/likesNb',
   deleteLikeUrl: 'http://localhost:8080/deleteLike',
-  myFriendsPostsUrl: 'http://localhost:8080/getFriendsPosts'
+  myFriendsPostsUrl: 'http://localhost:8080/getFriendsPosts',
+  notificationUrl: 'http://localhost:8080/myNotifications'
 
 };
 

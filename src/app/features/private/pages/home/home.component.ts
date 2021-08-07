@@ -20,6 +20,7 @@ export class HomeComponent implements OnInit {
   likesNb: number = 0;
   myPosts!: Publication[];
 
+
   constructor(private service: UserService, private postService: PubService) { }
 
   ngOnInit(): void {
@@ -55,7 +56,6 @@ export class HomeComponent implements OnInit {
         )
       })
     ).subscribe();
-    // this.allLikesIhave();
   }
 
   getNewFriend($event: number) {
@@ -75,4 +75,6 @@ export class HomeComponent implements OnInit {
   removeLike($event: number) {
     this.likesNb-=1;
   }
+
+
 }

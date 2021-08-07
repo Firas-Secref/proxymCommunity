@@ -35,9 +35,11 @@
                   </div>
                 </div>
                 <div class="text-center">
-                  <h3>
-                    {{userInput?.firstName| uppercase}} {{userInput?.lastName | uppercase}}<span class="font-weight-light">, {{userInput?.birthdate|age}}</span>
-                  </h3>
+                  <h2>
+                    <b>
+                      {{userInput?.firstName| uppercase}} {{userInput?.lastName | uppercase}}<span class="font-weight-light">, {{userInput?.birthdate|age}}</span>
+                    </b>
+                  </h2>
                   <div class="h5 font-weight-300">
                     <i class="ni location_pin mr-2"></i>{{userInput?.ville}}, {{userInput?.address}}
                   </div>

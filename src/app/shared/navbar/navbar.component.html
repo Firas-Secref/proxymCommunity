@@ -20,15 +20,21 @@
         <a (click)="goToChat()" class="nav-link"><mdb-icon fas icon="comment"></mdb-icon></a>
       </li>
 
-      <li class="nav-item" >
+      <li class="nav-item" (click)="badgeRestart()" >
         <a  class="nav-link">
           <div class="btn-group" mdbDropdown>
             <mdb-icon fas icon="bell" class="iconB" mdbDropdownToggle></mdb-icon>
-            <mdb-badge class="notifPos" color="red" style="border-radius: 30%; height: 60%">3</mdb-badge>
+            <mdb-badge *ngIf="badge != 0" class="notifPos" color="red" style="border-radius: 30%; height: 60%">{{badge}}</mdb-badge>
             <div class="dropdown-menu dropdown-menu-right row z-depth-1">
                 <div class="row" style="width: 400px">
-                  <div class="col-md-12">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium amet animi delectus dicta dolorum ducimus fugiat, illo in minus nulla numquam officia possimus repellendus repudiandae sed sint voluptates. Consectetur, eum?</p>
+                  <div class="col-md-12" *ngFor="let notif of myNotification">
+                    <div class="d-flex align-items-center ">
+                        <img class="rounded-circle" [src]="'data:image/png;base64,'+notif.to_userImage" alt="" style="height: 10%; width: 10%" />
+                      <div class="font-weight-bold" style="margin-left: 20px">
+                        <p style="font-size: 15px">{{notif.from_firstname}} {{notif.action}}</p>
+                      </div>
+                    </div>
+                    <hr>
                   </div>
                 </div>
               </div>
@@ -36,7 +42,7 @@
           </div>
         </a>
       </li>
-      <li class="nav-item" >
+      <li class="nav-item">
         <a mdbDropdownToggle class="nav-link">
           <div class="btn-group" mdbDropdown>
             <mdb-icon classInside="dropdown-toggle" fas icon="user-circle" mdbDropdownToggle></mdb-icon>
