@@ -16,6 +16,7 @@ import {MDBBootstrapModule} from "angular-bootstrap-md";
 import { AgePipe } from './pipes/age.pipe';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { SuccessRegisterComponent } from './modals/success-register/success-register.component';
+import { CustomSlicePipe } from './pipes/custom-slice.pipe';
 
 
 
@@ -24,7 +25,8 @@ import { SuccessRegisterComponent } from './modals/success-register/success-regi
     NavbarComponent,
     AgePipe,
     NotFoundComponent,
-    SuccessRegisterComponent
+    SuccessRegisterComponent,
+    CustomSlicePipe
   ],
   imports: [
     CommonModule,

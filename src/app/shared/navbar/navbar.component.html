@@ -29,9 +29,13 @@
                 <div class="row" style="width: 400px">
                   <div class="col-md-12" *ngFor="let notif of myNotification">
                     <div class="d-flex align-items-center ">
-                        <img class="rounded-circle" [src]="'data:image/png;base64,'+notif.to_userImage" alt="" style="height: 10%; width: 10%" />
-                      <div class="font-weight-bold" style="margin-left: 20px">
-                        <p style="font-size: 15px">{{notif.from_firstname}} {{notif.action}}</p>
+                        <img class="rounded-circle" [src]="'data:image/png;base64,'+notif?.to_userImage" alt="" style="height: 10%; width: 10%" />
+                      <div style="margin-left: 20px; margin-top: 7px">
+                        <div class="d-flex">
+                          <p style="font-size: 16px;">
+                            <b>{{notif?.to_firstname|uppercase}} {{notif?.to_lastname|uppercase}}</b> {{notif?.notificationText | customSlice: 0:50}}
+                          </p>
+                        </div>
                       </div>
                     </div>
                     <hr>

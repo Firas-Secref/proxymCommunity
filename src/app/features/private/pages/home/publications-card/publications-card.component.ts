@@ -38,11 +38,12 @@ export class PublicationsCardComponent implements OnInit, OnChanges {
   }
 
   updateLikes(id: number, i: number) {
-
+    const notificationTextForNewLike ="   likes your post: \""+this.postsInput[i].text + " \"";
+    console.log(notificationTextForNewLike);
     const notification: Notification = new Notification(this.userInput.id, this.userInput.firstName, this.userInput.lastName, this.userInput.username,
-      this.postsInput[i].firstName, this.postsInput[i].lastName, this.postsInput[i].username, this.postsInput[i].userId, this.userInput.profileImage, "like");
-    console.log(notification)
-    this.sendName(notification)
+      this.postsInput[i].firstName, this.postsInput[i].lastName, this.postsInput[i].username, this.postsInput[i].userId, this.userInput.profileImage, "like", notificationTextForNewLike);
+    console.log(notification);
+    this.sendNotification(notification);
 
     if(this.postsInput[i].userId == this.userInput.id){
       this.addNewLike.emit(1);
@@ -78,7 +79,7 @@ export class PublicationsCardComponent implements OnInit, OnChanges {
       _this.setConnected(true);
       console.log('Connected: ' + frame);
 
-      _this.stompClient.subscribe('/topic/newNotif', function (hello: any) {
+      _this.stompClient.subscribe('/topic/newNotifLike', function (hello: any) {
         _this.interaction.sendData({
           "newNotification":JSON.parse(hello.body),
           "updateBadge": true
@@ -96,9 +97,9 @@ export class PublicationsCardComponent implements OnInit, OnChanges {
     console.log('Disconnected!');
   }
 
-  sendName(notification: Notification) {
+  sendNotification(notification: Notification) {
     this.stompClient.send(
-      '/notif/notification',
+      '/notif/notificationForLike',
       {},
       JSON.stringify(notification)
     );

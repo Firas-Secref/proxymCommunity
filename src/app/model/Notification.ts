@@ -1,19 +1,20 @@
 
 export class Notification {
   id!: number;
-  from_userId!: number;
-  from_firstname!: string;
-  from_lastname!:string;
-  from_username!: string;
-  to_firstname!: string;
-  to_lastname!: string;
-  to_username!: string
-  to_userId!: number;
-  to_userImage!: string;
-  action!: string;
+  from_userId: number;
+  from_firstname: string;
+  from_lastname:string;
+  from_username: string;
+  to_firstname: string;
+  to_lastname: string;
+  to_username: string;
+  to_userId: number;
+  to_userImage: string;
+  action: string;
+  notificationText: string;
 
 
-  constructor(from_userId: number, from_firstname: string, from_lastname: string, from_username: string, to_firstname: string, to_lastname: string, to_username: string, to_userId: number, to_userImage: string, action: string) {
+  constructor(from_userId: number, from_firstname: string, from_lastname: string, from_username: string, to_firstname: string, to_lastname: string, to_username: string, to_userId: number, to_userImage: string, action: string, notificationText: string) {
     this.from_userId = from_userId;
     this.from_firstname = from_firstname;
     this.from_lastname = from_lastname;
@@ -24,6 +25,7 @@ export class Notification {
     this.to_userId = to_userId;
     this.to_userImage = to_userImage;
     this.action = action;
+    this.notificationText = notificationText;
   }
 
 }

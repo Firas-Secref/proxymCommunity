@@ -14,7 +14,7 @@ import {Developer} from "../../model/Developer";
 })
 export class NavbarComponent implements OnInit {
 
-  myNotification!: Notification[];
+  myNotification!: any[];
   currentUser!: Developer;
   badge: number = 0;
 
@@ -27,7 +27,7 @@ export class NavbarComponent implements OnInit {
         this.currentUser = user;
         console.log(user.id)
         return this.notificationService.getMyAllNotifications(user.id).pipe(
-          map((notifs: Notification[])=>{
+          map((notifs: any[])=>{
             this.myNotification = notifs;
             console.log(this.myNotification)
 
@@ -65,6 +65,6 @@ export class NavbarComponent implements OnInit {
   }
 
   badgeRestart() {
-    this.badge =0;
+    this.badge = 0;
   }
 }

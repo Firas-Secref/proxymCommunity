@@ -1,6 +1,5 @@
 import {Component, Input, OnChanges, OnInit, Output, SimpleChanges, EventEmitter} from '@angular/core';
-import {MatDialog} from "@angular/material/dialog";
-import {NewPubComponent} from "./new-pub/new-pub.component";
+
 import {Developer} from "../../../../../model/Developer";
 import {map, mergeMap} from "rxjs/operators";
 import {PubService} from "../../../services/pub.service";
@@ -10,7 +9,10 @@ import {Publication} from "../../../../../model/Publication";
 import {UserService} from "../../../services/user.service";
 import {ToastrService} from "ngx-toastr";
 import {InteractionService} from "../../../services/interaction.service";
-
+// @ts-ignore
+import * as SockJS from "sockjs-client";
+import * as Stomp from "stompjs";
+import {Notification} from "../../../../../model/Notification";
 @Component({
   selector: 'app-new-post-card',
   templateUrl: './new-post-card.component.html',
@@ -26,21 +28,19 @@ export class NewPostCardComponent implements OnInit, OnChanges {
   image!: File;
   loaded1: any;
   selectedCategorie!: string;
-  newPost!: Publication
+  newPost!: Publication;
+
+  greetings: string[] = [];
+  disabled = true;
+  name!: string;
+  private stompClient: any = null;
+
   ngOnInit(): void {
-    this.initForm()
+    this.initForm();
   }
 
   openDialog(content: any) {
     this.modalService.open(content, { size: 'md' })
-    // const dialogRef = this.dialog.open(NewPubComponent, {
-    //   width: "50%",
-    //   data: {firstName: this.userInput.firstName,
-    //   lastname: this.userInput.lastName,
-    //   userImage: this.userInput.profileImage}
-    // });
-
-
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -81,8 +81,47 @@ export class NewPostCardComponent implements OnInit, OnChanges {
     this.pubSservice.newPost(formData).subscribe((newPost: Publication) =>{
       this.newPost = newPost;
       this.updatePosts.emit(this.newPost)
-      this.toastr.success("Post Added successfully ..")
+      this.toastr.success("Post Added successfully ..");
+
     })
+  }
+
+  connect() {
+    const socket = new SockJS('http://localhost:8080/notification-endpoint');
+    this.stompClient = Stomp.over(socket);
+
+    const _this = this;
+    this.stompClient.connect({}, function (frame: any) {
+      _this.setConnected(true);
+      console.log('Connected: ' + frame);
+
+      _this.stompClient.subscribe('/topic/newNotifPost', function (hello: any) {
+        _this.interaction.sendData({
+          "newNotification":JSON.parse(hello.body),
+          "updateBadge": true
+        })
+      });
+    });
+  }
+
+  setConnected(connected: boolean) {
+    this.disabled = !connected;
+
+    if (connected) {
+      this.greetings = [];
+    }
+  }
+
+  showGreeting(message: string) {
+    this.greetings.push(message);
+  }
+
+  sendNotification(notification: Notification) {
+    this.stompClient.send(
+      '/notif/notificationForNewPost',
+      {},
+      JSON.stringify(notification)
+    );
   }
 
 }

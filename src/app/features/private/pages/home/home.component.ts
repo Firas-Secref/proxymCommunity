@@ -20,7 +20,6 @@ export class HomeComponent implements OnInit {
   likesNb: number = 0;
   myPosts!: Publication[];
 
-
   constructor(private service: UserService, private postService: PubService) { }
 
   ngOnInit(): void {
