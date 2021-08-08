@@ -44,6 +44,14 @@ export class NavbarComponent implements OnInit {
         this.badge++;
       }
     })
+
+    this.interaction.norificationFollow$.subscribe((data: any) =>{
+      console.log(data)
+      if (data.to_userId == this.currentUser.id){
+        this.myNotification.unshift(data);
+        this.badge++;
+      }
+    })
   }
 
 

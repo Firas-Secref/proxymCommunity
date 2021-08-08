@@ -1,5 +1,5 @@
 <app-navbar></app-navbar>
-<div class="d-flex justify-content-center" style="margin-top: 50%;" *ngIf="!likesNb && !user && !posts && !allUsers && !postsNb && !friends">
+<div class="d-flex justify-content-center" style="margin-top: 50%;" *ngIf="!user">
   <div class="spinner-border spinner-grow-sm " role="status" style="height: 65px; width: 65px; font-size: 35px; color: #0d47a1">
     <span class="visually-hidden" >Loading...</span>
   </div>
@@ -10,7 +10,7 @@
     <app-card-profile [userInput]="user" [postsNb]="postsNb" [follows]="friends" [likesNb]="likesNb" ></app-card-profile>
     <app-carousel [suggestions]="allUsers" (sendNewFriend)="getNewFriend($event)" ></app-carousel>
   </div>
-  <div class="col-md-8 marge" >
+  <div class="col-md-8 marge" style="height: 800px;overflow-y: scroll; ">
     <div class="container mt-7 overflow-auto">
       <div class="m-auto order-xl-2 mb-5 mb-xl-0 padd">
 

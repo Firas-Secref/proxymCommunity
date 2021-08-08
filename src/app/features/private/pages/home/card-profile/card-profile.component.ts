@@ -14,6 +14,7 @@ export class CardProfileComponent implements OnInit, OnChanges {
   @Input() follows!: number;
   @Input() likesNb!: number;
 
+
   constructor(private router: Router) { }
 
   ngOnInit(): void {

@@ -8,16 +8,16 @@ export class InteractionService {
 
   private _source = new Subject<any>();
   message$ = this._source.asObservable();
-  private _sourceNotif = new Subject<any>();
-  norificationInfo$ = this._sourceNotif.asObservable();
+  private _sourceNotifFollow = new Subject<any>();
+  norificationFollow$ = this._sourceNotifFollow.asObservable();
   constructor() { }
 
   sendData(data: any){
     this._source.next(data);
   }
 
-  sendNewNotification(data: any){
-    this._sourceNotif.next(data)
+  sendNewFollowNotification(data: any){
+    this._sourceNotifFollow.next(data)
   }
 
 
