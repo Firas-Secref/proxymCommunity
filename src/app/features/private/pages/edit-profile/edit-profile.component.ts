@@ -3,6 +3,7 @@ import {UserService} from "../../services/user.service";
 import {Developer} from "../../../../model/Developer";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {allProfiles} from "../../../../core/profile";
+import {Departments} from "../../../../core/Department";
 
 
 @Component({
@@ -13,7 +14,7 @@ import {allProfiles} from "../../../../core/profile";
 export class EditProfileComponent implements OnInit {
 
   allProfiles = allProfiles;
-  departement = ["DigiX Team", "Banking Lab"];
+  departement = Departments;
 
   profileForm!: FormGroup;
   selcetedProfile!: string;
@@ -29,7 +30,7 @@ export class EditProfileComponent implements OnInit {
   ngOnInit(): void {
     this.initForm();
     this.service.getUserByUsername(localStorage.getItem("username")).subscribe((data: Developer) => {
-      console.log(data)
+      console.log(data);
       this.currentDev = data;
       this.profileForm.patchValue({
         username: data.username,
@@ -91,7 +92,7 @@ export class EditProfileComponent implements OnInit {
     this.currentDev.lastName = prenom;
     this.currentDev.email = email;
     this.currentDev.profile = profile;
-    this.currentDev.departement = departement
+    this.currentDev.departement = departement;
     this.service.updateUser(this.currentDev.id, user).subscribe((data: any) => {
       console.log("updated");
     })

@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, NgModel, Validators} from "@angular/forms";
 import {Developer} from "../../../../model/Developer";
+
 import {allProfiles} from "../../../../core/profile";
+import {Departments} from "../../../../core/Department";
+
 import {RegisterService} from "../../services/register.service";
 import {DatePipe} from "@angular/common";
 import {Router} from "@angular/router";
@@ -25,6 +28,7 @@ export class Register2Component implements OnInit {
   allProfiles = allProfiles;
   profile!: string;
   department!: string;
+  departments = Departments;
   birthdate!: any;
   constructor(private fb: FormBuilder, private service: RegisterService,
               private datePipe: DatePipe, private router: Router, private toastr: ToastrService) { }

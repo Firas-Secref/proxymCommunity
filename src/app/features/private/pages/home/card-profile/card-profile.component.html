@@ -1,4 +1,4 @@
-<div class="d-flex justify-content-center" style="margin-top: 50%;" *ngIf="!userInput.birthdate">
+<div class="d-flex justify-content-center" style="margin-top: 50%;" *ngIf="!userInput">
   <div class="spinner-border spinner-grow-sm " role="status" style="height: 65px; width: 65px; font-size: 35px; color: #0d47a1">
     <span class="visually-hidden" >Loading...</span>
   </div>
@@ -25,7 +25,7 @@
                     <div class="card-profile-stats d-flex justify-content-center mt-md-5">
                       <div>
                         <span class="heading">{{follows}}</span>
-                        <span class="description">Friends</span>
+                        <span class="description">Follows</span>
                       </div>
                       <div>
                         <span class="heading">{{postsNb}}</span>
@@ -43,6 +43,7 @@
                     <b>
                       {{userInput?.firstName| uppercase}} {{userInput?.lastName | uppercase}}<span class="font-weight-light">, {{userInput?.birthdate|age}}</span>
                     </b>
+
                   </h2>
                   <div class="h5 font-weight-300">
                     <i class="ni location_pin mr-2"></i>{{userInput?.ville}}, {{userInput?.address}}

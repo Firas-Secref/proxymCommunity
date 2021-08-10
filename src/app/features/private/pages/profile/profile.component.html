@@ -63,7 +63,7 @@
                     <div class="timeline-body" *ngFor="let p of myPosts; let i = index;">
                       <div class="timeline-header">
                         <span class="userimage" ><img style="width: 100%; height: 100%; " class="rounded-circle" [src]="'data:image/png;base64,'+p?.userImage" alt=""></span>
-                        <span class="username" ><a href="javascript:;">{{p?.firstName}} {{p?.lastName}}</a>. <small>{{p?.userDepartment}}</small></span>
+                        <span class="username" ><a style="text-decoration: none" href="">{{p?.firstName}} {{p?.lastName}}</a>. <small>{{p?.userDepartment}}</small></span>
                       </div>
                       <br>
                       <div class="timeline-content">

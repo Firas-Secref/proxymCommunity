@@ -158,8 +158,7 @@
                   <div class="form-input">
                     <label for="department"><b>Department</b> <small style="color: #9fa5b1"> (Required)</small></label><br>
                     <select formControlName="department" (change)="getDepartment($event)" id="department">
-                      <option value="DigiX Team">DigiX Team</option>
-                      <option value="Banking Lab">Banking Lab</option>
+                      <option *ngFor="let dep of departments" [value]="dep">{{dep}}</option>
                     </select>
                     <small style="color: red" *ngIf="thirdFormGroup.get('department').invalid && thirdFormGroup.get('department').touched ">Select your department</small>
 
