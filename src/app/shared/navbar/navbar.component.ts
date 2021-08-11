@@ -29,19 +29,21 @@ export class NavbarComponent implements OnInit {
         return this.notificationService.getMyAllNotifications(user.id).pipe(
           map((notifs: any[])=>{
             this.myNotification = notifs;
-            console.log(this.myNotification)
+            console.log(this.myNotification);
 
           })
         )
       })
     ).subscribe();
     // this.notificationService.getMyAllNotifications()
-    console.log("navbar")
+    console.log("navbar");
     this.interaction.message$.subscribe((data: any)=>{
       console.log("data from socket", data);
+      console.log("badge", this.badge)
       if (data.newNotification.to_userId == this.currentUser.id){
         this.myNotification.unshift(data.newNotification);
         this.badge++;
+        console.log(this.badge)
       }
     })
 

@@ -69,6 +69,7 @@ export class CarouselComponent implements OnInit, OnChanges {
       console.log('Connected: ' + frame);
 
       _this.stompClient.subscribe('/topic/newNotifFollow', function (hello: any) {
+        console.log("jello",hello.body)
         _this.interaction.sendNewFollowNotification(
           JSON.parse(hello.body)
         )

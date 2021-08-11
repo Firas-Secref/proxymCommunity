@@ -26,16 +26,14 @@
             <mdb-icon fas icon="bell" class="iconB" mdbDropdownToggle></mdb-icon>
             <mdb-badge *ngIf="badge != 0" class="notifPos" color="red" style="border-radius: 30%; height: 60%">{{badge}}</mdb-badge>
             <div class="dropdown-menu dropdown-menu-right row z-depth-1">
-                <div class="row" style="width: 400px; height: 400px; overflow-y: auto">
+                <div class="row" style="width: 400px; ">
                   <div class="col-md-12" *ngFor="let notif of myNotification">
-                    <div class="d-flex align-items-center ">
+                    <div class="d-flex ">
                         <img class="rounded-circle" [src]="'data:image/png;base64,'+notif?.to_userImage" alt="" style="height: 10%; width: 10%" />
                       <div style="margin-left: 20px; margin-top: 7px">
-                        <div class="d-flex">
                           <p style="font-size: 16px;">
                             <b>{{notif?.from_firstname|uppercase}} {{notif?.from_lastname|uppercase}}</b> {{notif?.notificationText | customSlice: 0:50}}
                           </p>
-                        </div>
                       </div>
                     </div>
                     <hr>

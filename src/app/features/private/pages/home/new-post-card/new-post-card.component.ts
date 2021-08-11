@@ -82,7 +82,8 @@ export class NewPostCardComponent implements OnInit, OnChanges {
       this.newPost = newPost;
       this.updatePosts.emit(this.newPost)
       this.toastr.success("Post Added successfully ..");
-
+      this.loaded1 = null;
+      this.publicationForm.reset();
     })
   }
 

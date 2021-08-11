@@ -22,7 +22,7 @@ export const allProfiles =[
   {
     profileId: 6,
     profileName: "Designer",
-    profileImage: "assets/temp_for_register/profiles/Angular.png"
+    profileImage: "assets/temp_for_register/profiles/designer.png"
   },
   {
     profileId: 6,
